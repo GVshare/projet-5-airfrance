@@ -18,13 +18,13 @@ foreach ($listStocks as $stock) :
 
 	
 
-	if ($dateDifference > 0 && $dateDifference < 30) {
+	if ($dateDifference > 0 && $dateDifference < 30) :
 		$partAlmostExpiringAF ++;
-	}
+	endif;
 
-	if ($dateDifference < 0) {
+	if ($dateDifference < 0) :
 		$partExpiredAF ++;
-	}
+	endif;
 endforeach;
 ?>
 

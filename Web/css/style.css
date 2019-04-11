@@ -162,6 +162,14 @@ th {
 	text-shadow: red 1px 0 10px;
 }
 
+.missStock, .expireItem {
+	background-color: red;
+}
+
+.almostExpireItem {
+	background-color: orange;
+}
+
 h3 {
 	color: darkblue;
 	text-decoration: underline;

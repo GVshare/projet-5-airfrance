@@ -32,7 +32,7 @@
 
 <!-- STOCK INVENTORY TABLE -->
 	<?php 
-	foreach ($listStocks as $stock) :
+	foreach ($listStocks as $stock) :										
 	?>
 
 	<tr>
@@ -41,8 +41,26 @@
 		<th><?= $stock['partNumber']?></th>
 		<th><?= $stock['serialNumber']?><a href="/projet-5-airfrance/Web/stocks-<?= $stock['id'] ?>"><i class="fas fa-pencil-alt"></i></a></th>
 		<th><?= $stock['parStock']?></th>
-		<th><a href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>"><i class="fas fa-minus-circle"></i></a><?= $stock['stockOnHand']?><a href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>"><i class="fas fa-plus-circle"></i></a></th>
-		<th><?= $stock['shelfLife']?></th>
+
+		<!-- If stock on hand is less than par stock change class to 'missStock' (change background color to red) -->
+		<th <?php if ($stock['stockOnHand'] < $stock['parStock']): ?>class="missStock"
+			<?php endif ?>
+		><a href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>"><i class="fas fa-minus-circle"></i></a><?= $stock['stockOnHand']?><a href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>"><i class="fas fa-plus-circle"></i></a></th>
+
+		<!-- Calculate the time  left in days between today and the ShelfLife -->
+		<?php  
+		$dateExpire = strtotime($stock['shelfLife']);
+		$dateNow = time();
+		$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+		?>
+
+		<!-- If shelfLife is less than 30 days change class to almostExpiredItem (change background color to orange) -->
+		<!-- ElseIf shelfLife is less than 0 day change class to ExpiredItem (change background color to red) -->
+		<th <?php if ($dateDifference > 0 && $dateDifference < 30) : ?> class='almostExpireItem'
+			<?php elseif ($dateDifference <= 0 ) :?> class='expireItem'
+			<?php endif ?> 
+		><?= $stock['shelfLife']?></th>
+
 		<th><?= $stock['provider']?></th>
 		<th><?= $stock['users']?></th>
 		<th class="deletePart"><a href="/projet-5-airfrance/Web/stocks-delete-<?= $stock['id'] ?>"><i class="fas fa-trash-alt"></i></a></th>
