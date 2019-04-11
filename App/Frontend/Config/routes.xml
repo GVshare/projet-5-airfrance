@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+  <route url="/projet-5-airfrance/Web/" module="Stocks" action="index" ></route>
+  <route url="/projet-5-airfrance/Web/stocks" module="Stocks" action="stocks" ></route>
+  <route url="/projet-5-airfrance/Web/stocks-decrease-([0-9]+)" module="Stocks" action="decrease" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-increase-([0-9]+)" module="Stocks" action="increase" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-delete-([0-9]+)" module="Stocks" action="delete" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-add" module="Stocks" action="add"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([0-9]+)" module="Stocks" action="stocks" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-update-([0-9]+)" module="Stocks" action="update" vars="id"></route>
+
+  
+</routes>

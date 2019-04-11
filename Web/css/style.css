@@ -1,0 +1,240 @@
+body {
+	width: 100%;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 2.5em;
+	text-align: center;
+	color: darkblue;
+	width: 100%;
+}
+
+.companyStockSummary {
+	width: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-top: solid 1px lightgrey;
+	border-bottom: solid 1px lightgrey;
+}
+
+a {
+	text-decoration: none;
+}
+
+header {
+	display: flex;
+	justify-content: space-around;
+}
+
+button {
+	font-size: 1.5em;
+	margin-right: 50px;
+	margin-left: 5%;
+	border-radius: 10px;
+	background-color: cyan;
+	color: blue;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: white;
+	border-color: blue;
+}
+
+#statusGood {
+	font-size: 1em;
+	color: green;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+#missingPartText {
+	font-size: 1em;
+	color: red;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+#partAlmostExpiringText {
+	font-size: 1em;
+	color: darkorange;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+#partExpiredText {
+	font-size: 1em;
+	color: red;
+	font-weight: bold;
+	margin-right: 50px;
+}
+
+#navDot {
+	display: flex;
+	justify-content: space-around;
+	padding-top: 12vh;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.dot {
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+.stockTitle {
+	text-align: center;
+	color: darkblue;
+	background-color: darkblue;
+	border: 1px solid grey;
+	width: 100%;
+	box-sizing: border-box;
+	position: fixed;
+	margin-top: 0;
+	display: flex;
+}
+
+.stockTitleText {
+	color: white;
+	font-size: 2.1em;
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
+	padding-right: 4%;
+}
+
+.logoBack {
+	color: white;
+	font-size: 2em;
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
+	padding-left: 2%;
+}
+
+.logoBack:hover {
+	font-size: 2.1em;
+	text-shadow: gold 1px 0 10px;
+}
+
+table {
+	margin-top: 
+	border: red 1px solid;
+	width: 95%;
+	padding-top: 15vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+th {
+	border: black 1px solid;
+}
+
+.fa-pencil-alt {
+	float: right;
+	color: darkblue;
+}
+
+.fa-plus-circle {
+	float: right;
+	margin-right: 10%;
+	color: darkgreen;
+}
+
+.fa-minus-circle {
+	float: left;
+	margin-left: 10%;
+	color: darkred;
+}
+
+.deletePart {
+	border: none;
+}
+
+.fa-trash-alt {
+	color: darkred;
+}
+
+.fa-trash-alt:hover {
+	text-shadow: red 1px 0 10px;
+}
+
+h3 {
+	color: darkblue;
+	text-decoration: underline;
+	text-align: center;
+}
+
+#tableCommand {
+	margin-top: -14vh;
+	width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#buttonNewSerial {
+	margin-left: 20%;
+	border-radius: 5px;
+}
+
+th input {
+	width: 90%;
+}
+
+form {
+	max-width: 100%;
+}
+
+.fa-check {
+	color: green;
+}
+
+.fa-check:hover {
+	text-shadow: green 1px 0 10px;
+}
+
+#box {
+	position: absolute;
+	display: flex;
+	top: 40vh;
+	left: 35%;
+	width: 30%;
+	height: 100px;
+	background-color: silver;
+	border: 5px solid darkblue;
+	overflow: hidden;
+}
+
+#box div {
+	margin-left: 10%;
+}
+
+#newSerialN {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: 5%; 
+}
+
+#newShelfLife {
+	width: 100%;
+	margin-top: 10px;
+	margin-left: 5%;
+	margin-bottom: 10px; 
+}
+
+#buttonNewSerial {
+	margin-left: 20%;
+	border-radius: 5px;
+}
+
+#imgPlane {
+	position: absolute;
+	width: 10px;
+	height: auto;
+	bottom: 30%;
+	font-size: 2em;
+	color: purple;
+}
