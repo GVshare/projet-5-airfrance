@@ -1,5 +1,5 @@
 <?php
-namespace App\Frontend\Modules\Stocks;
+namespace App\Backend\Modules\Stocks;
  
 use \OCFram\BackController;
 use \OCFram\HTTPRequest;
@@ -26,6 +26,16 @@ class StocksController extends BackController
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
   }    
+
+  public function executeFilter(HTTPRequest $request)
+  {
+    $manager = $this->managers->getManagerOf('Stocks');
+
+    $listStocks = $manager->getListFiltered($request->getData("dot"));
+
+    // We now add listStocks to the view
+    $this->page->addVar('listStocks', $listStocks);
+  } 
 
   public function executeDecrease(HTTPRequest $request)
   {
@@ -86,5 +96,5 @@ class StocksController extends BackController
     );
     
     header('location: /projet-5-airfrance/Web/stocks');
-  } 
+  }
 }

@@ -16,7 +16,9 @@ class StocksManagerPDO extends StocksManager
     WHERE company = "airFrance"
     ORDER BY itemPool ASC';
     
-    $requete = $this->dao->query($sql);
+    $requete = $this->dao->prepare($sql);
+    $requete->execute();
+    
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
     
     $listStocks = $requete->fetchAll();
@@ -24,6 +26,27 @@ class StocksManagerPDO extends StocksManager
     $requete->closeCursor();
     
     return $listStocks;
+  }
+
+  public function getListFiltered($dot)
+  {
+    $sql = '
+    SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
+    FROM stocks
+    WHERE company = "airFrance" AND dot = ?
+    ORDER BY itemPool ASC';
+
+    $requete = $this->dao->prepare($sql);
+    $requete->execute(array($dot));
+
+    $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
+    
+    $listStocks = $requete->fetchAll();
+    
+    $requete->closeCursor();
+       
+    return $listStocks;
+
   }
 
   public function decrease($id)

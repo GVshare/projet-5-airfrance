@@ -1,15 +1,15 @@
 <?php
-namespace App\Frontend;
+namespace App\Backend;
  
 use \OCFram\Application;
  
-class FrontendApplication extends Application
+class BackendApplication extends Application
 {
   public function __construct()
   {
     parent::__construct();
  
-    $this->name = 'Frontend';
+    $this->name = 'Backend';
   }
  
   public function run()

@@ -19,7 +19,7 @@ class Page extends ApplicationComponent
   public function getGeneratedPage()
   {
     if (!file_exists($this->contentFile))
-    {
+    {var_dump($this->contentFile);
       throw new \RuntimeException('La vue spécifiée n\'existe pas');
 
     }

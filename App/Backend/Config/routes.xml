@@ -8,6 +8,8 @@
   <route url="/projet-5-airfrance/Web/stocks-add" module="Stocks" action="add"></route>
   <route url="/projet-5-airfrance/Web/stocks-([0-9]+)" module="Stocks" action="stocks" vars="id"></route>
   <route url="/projet-5-airfrance/Web/stocks-update-([0-9]+)" module="Stocks" action="update" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-filter-([A-Z]+)" module="Stocks" action="filter" vars="dot"></route>
+
 
   
 </routes>
