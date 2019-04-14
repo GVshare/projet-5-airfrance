@@ -8,44 +8,30 @@ class StocksManagerPDO extends StocksManager
 
   // GET FULL STOCK OF AIRFRANCE =============================================================================================================
 
-  public function getList()
-  {
-    $sql = '
-    SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
-    FROM stocks
-    WHERE company = "airFrance"
-    ORDER BY itemPool ASC';
-    
-    $requete = $this->dao->prepare($sql);
-    $requete->execute();
-    
-    $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
-    
-    $listStocks = $requete->fetchAll();
-    
-    $requete->closeCursor();
-    
-    return $listStocks;
-  }
 
-  public function getListFiltered($dot)
+  public function getListFiltered($company , $dot)
   {
-    if ($dot == NULL) :
+    if ($dot == "All") :
       $sql = '
       SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
       FROM stocks
-      WHERE company = "airFrance"
+      WHERE company = ?
       ORDER BY itemPool ASC';
     else :
       $sql = '
       SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
       FROM stocks
-      WHERE company = "airFrance" AND dot = ?
+      WHERE company = ? AND dot = ?
       ORDER BY itemPool ASC';
     endif;
 
     $requete = $this->dao->prepare($sql);
-    $requete->execute(array($dot));
+
+    if ($dot == "All"):
+      $requete->execute(array($company));
+    else :
+      $requete->execute(array($company , $dot));
+    endif;
 
     $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
     
@@ -54,7 +40,6 @@ class StocksManagerPDO extends StocksManager
     $requete->closeCursor();
        
     return $listStocks;
-
   }
 
   public function decrease($id)
@@ -95,16 +80,16 @@ class StocksManagerPDO extends StocksManager
     $requete->execute(array($id));
   }
 
-  public function add($itemPool , $kit , $extention , $designation , $partNumber , $serialNumber , $parStock , $stockOnHand , $shelfLife , $provider , $users)
+  public function add($itemPool , $kit , $extention , $designation , $partNumber , $serialNumber , $parStock , $stockOnHand , $shelfLife , $provider , $users , $company)
   {
     $sql = '
     INSERT INTO stocks (itemPool, dot , kit ,designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , company) 
-    VALUES (? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , "airFrance")
+    VALUES (? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)
     ';
 
     $requete = $this->dao->prepare($sql);
     
-    $requete->execute(array($itemPool , $kit , $extention , $designation , $partNumber , $serialNumber , $parStock , $stockOnHand , $shelfLife , $provider , $users));
+    $requete->execute(array($itemPool , $kit , $extention , $designation , $partNumber , $serialNumber , $parStock , $stockOnHand , $shelfLife , $provider , $users , $company));
   }
 
   public function update($id , $serialNumber , $shelfLife)

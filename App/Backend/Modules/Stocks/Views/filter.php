@@ -1,12 +1,12 @@
 <!-- HEADER -->
 <div class="stockTitle">
-	<a href="/projet-5-airfrance/Web/" class="logoBack"><i class="far fa-hand-point-left"></i></a><h1 class="stockTitleText">AirFrance Stock</h1>
+	<a href="/projet-5-airfrance/Web/" class="logoBack"><i class="far fa-hand-point-left"></i></a><h1 class="stockTitleText"><?= $_GET['company'] ?> Stock</h1>
 </div>
 
 <!-- SUBTITLES / FILTERS -->
 <div id="navDot">
 
-	<a href="/projet-5-airfrance/Web/stocks">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-All">
 		<button <?php 
 			if (isset($_GET['dot'])) : ?>class="dot" <?php 
 			else : ?> class="dot , selected" <?php endif; ?>>
@@ -14,7 +14,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-A">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-A">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'A') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -22,7 +22,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-G">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-G">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'G') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -30,7 +30,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-E">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-E">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'E') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -38,7 +38,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-Q">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-Q">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'Q') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -46,7 +46,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-T">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-T">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'T') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -54,7 +54,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-X">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-X">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'X') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -62,7 +62,7 @@
 		</button>
 	</a>
 
-	<a href="/projet-5-airfrance/Web/stocks-filter-ING">
+	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-ING">
 		<button <?php 
 			if (isset($_GET['dot']) && $_GET['dot'] == 'ING') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
@@ -96,8 +96,8 @@
 		<th><?= $stock['partNumber']?></th>
 		<th><?= $stock['serialNumber']?>
 			<a <?php 
-				if (isset($_GET['dot'])) : ?>href="/projet-5-airfrance/Web/stocks-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>" <?php 
-				else : ?> href="/projet-5-airfrance/Web/stocks-<?= $stock['id'] ?>" <?php endif; ?>>
+				if ($_GET['dot'] == 'All') : ?>href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-All-updateBox-<?= $stock['id'] ?>"<?php 
+				else : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-updateBox-<?= $stock['id'] ?>-filter-<?= $_GET['dot'] ?>" <?php endif; ?>>
 				<i class="fas fa-pencil-alt"></i>
 			</a>
 		</th>
@@ -109,16 +109,16 @@
 
 			<!-- When clicking on the minus bottom redirect to stock if filter not set or stock-filter-page is filter declared -->
 			<a <?php 
-				if (isset($_GET['dot'])) : ?> href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>" <?php 
-				else : ?> href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>" <?php endif; ?>>
+				if ($_GET['dot']=='All') : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-decrease-<?= $stock['id'] ?>-filter-All" <?php 
+				else : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-decrease-<?= $stock['id'] ?>-filter-<?= $_GET['dot']  ?>" <?php endif; ?>>
 				<i class="fas fa-minus-circle"></i>
 			</a>
 
 			<!-- When clicking on the plus bottom redirect to stock if filter not set or stock-filter-page is filter declared -->
 			<?= $stock['stockOnHand']?>
 			<a <?php 
-				if (isset($_GET['dot'])) : ?> href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>" <?php 
-				else : ?> href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>" <?php endif; ?>>
+				if ($_GET['dot']=='All') : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-increase-<?= $stock['id'] ?>-filter-All" <?php 
+				else : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-increase-<?= $stock['id'] ?>-filter-<?= $_GET['dot']  ?>" <?php endif; ?>>
 				<i class="fas fa-plus-circle"></i>
 			</a>
 		</th>
@@ -141,8 +141,8 @@
 		<th><?= $stock['users']?></th>
 		<th class="deletePart">
 			<a <?php 
-				if (isset($_GET['dot'])) : ?>href="/projet-5-airfrance/Web/stocks-delete-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>" <?php 
-				else : ?> href="/projet-5-airfrance/Web/stocks-delete-<?= $stock['id'] ?>" <?php endif; ?>>
+				if ($_GET['dot']=='All') : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-delete-<?= $stock['id'] ?>-filter-All" <?php 
+				else : ?> href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-delete-<?= $stock['id'] ?>-filter-<?= $_GET['dot']  ?>" <?php endif; ?>>
 				<i class="fas fa-trash-alt"></i>
 			</a>
 		</th>
@@ -155,7 +155,7 @@
 <!-- ADD ITEM TO STOCK TABLE -->
 </table>
 
-<form action="/projet-5-airfrance/Web/stocks-add-filter-<?= $stock['dot'] ?>" method="post" name="newPart">
+<form action="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-add" method="post" name="newPart">
 	<table id="tableCommand">
 		<tr>
 			<th>Item Pool</th>
@@ -199,21 +199,27 @@
 	</table>
 </form>
 
-<!-- NEW SERIAL NUMBER BOX -->
-<?php
-if (isset($_GET['id'])) {
-?>
+<!-- UPDATE BOX -->
+<?php if (isset($_GET['id'])) : ?>
+
 <div id="box">
-	<form method="POST" <?php if (isset($_GET['dot'])) : ?>action="/projet-5-airfrance/Web/stocks-update-<?= $_GET['id'] ?>-filter-<?= $stock['dot'] ?>" <?php else : ?> action="/projet-5-airfrance/Web/stocks-update-<?= $_GET['id'] ?>" <?php endif; ?>>
+	<form method="POST" <?php 
+
+	if ($_GET['dot'] == 'All') : ?>action="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-All-update-<?= $_GET['id'] ?>"<?php 
+	else : ?> action="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-update-<?= $_GET['id'] ?>-filter-<?= $_GET['dot'] ?>" <?php endif; ?>>
+
 		<input id="newSerialN" type="text" name="serialNumber" placeholder="Your new Serial Number" required>
 		<input id="newShelfLife" type="date" name="shelfLife" placeholder="New shelf Life YYYY-MM-DD" required>
+
 		<div>
 			<input type="submit" name="submitNewSN" value="Valider" id="buttonNewSerial">
-			<a href="/projet-5-airfrance/Web/stocks"><input type="button" value="Annuler" id="buttonNewSerial"></a>
+			<a <?php 
+				if ($_GET['dot'] == 'All') : ?> href="/projet-5-airfrance/Web/stocks-airFrance-All"<?php 
+				else : ?> href="/projet-5-airfrance/Web/stocks-airFrance-filter-<?= $_GET['dot'] ?>"><input type="button" value="Annuler" id="buttonNewSerial"> <?php endif; ?>
+			</a>
 		</div>
 		
 	</form>
 </div>
-<?php
-}
-?>
+
+<?php endif; ?>

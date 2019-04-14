@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
+  <!-- ROUTE TO GO TO INDEX PAGE -->
   <route url="/projet-5-airfrance/Web/" module="Stocks" action="index" ></route>
-  <route url="/projet-5-airfrance/Web/stocks" module="Stocks" action="filter" ></route>
-  <route url="/projet-5-airfrance/Web/stocks-filter-([A-Z]+)" module="Stocks" action="filter" vars="dot"></route>
 
+  <!-- ROUTE TO GO TO STOCKS PAGE -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)" module="Stocks" action="filter" vars="company,dot" ></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-filter-([A-Z]+)" module="Stocks" action="filter" vars="company,dot"></route>
+ 
+  <!-- ROUTE TO DECREASE STOCK ITEMS -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-decrease-([0-9]+)-filter-(All)" module="Stocks" action="decrease" vars="company,id,dot"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-decrease-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="decrease" vars="company,id,dot"></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-([0-9]+)" module="Stocks" action="filter" vars="id"></route>
-  <route url="/projet-5-airfrance/Web/stocks-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="filter" vars="id,dot"></route>
+  <!-- ROUTE TO INCREASE STOCK ITEMS -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-increase-([0-9]+)-filter-(All)" module="Stocks" action="increase" vars="company,id,dot"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-increase-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="increase" vars="company,id,dot"></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-decrease-([0-9]+)" module="Stocks" action="decrease" vars="id"></route>
-  <route url="/projet-5-airfrance/Web/stocks-decrease-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="decrease" vars="id,dot"></route>
+  <!-- ROUTE TO DELETE STOCK ITEMS -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-delete-([0-9]+)-filter-(All)" module="Stocks" action="delete" vars="company,id,dot"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-delete-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="delete" vars="company,id,dot"></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-increase-([0-9]+)" module="Stocks" action="increase" vars="id"></route>
-  <route url="/projet-5-airfrance/Web/stocks-increase-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="increase" vars="id,dot"></route>
+  <!-- ROUTE TO ADD STOCK ITEMS -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-add" module="Stocks" action="add" vars='company'></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-delete-([0-9]+)" module="Stocks" action="delete" vars="id"></route>
-  <route url="/projet-5-airfrance/Web/stocks-delete-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="delete" vars="id,dot"></route>
+  <!-- ROUTE TO OPEN THE UPDATE BOX -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)-updateBox-([0-9]+)" module="Stocks" action="filter" vars='company,dot,id'></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-updateBox-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="filter" vars='company,id,dot'></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-add" module="Stocks" action="add"></route>
-  <route url="/projet-5-airfrance/Web/stocks-add-filter-([A-Z]+)" module="Stocks" action="add" vars="dot"></route>
+  <!-- ROUTE TO UPDATE SERIAL NUMBER AND SHELF LIFE -->
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)-update-([0-9]+)" module="Stocks" action="update" vars="company,dot,id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-update-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="update" vars="company,id,dot"></route>
 
-  <route url="/projet-5-airfrance/Web/stocks-update-([0-9]+)" module="Stocks" action="update" vars="id"></route>
-  <route url="/projet-5-airfrance/Web/stocks-update-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="update" vars="id,dot"></route>
 </routes>

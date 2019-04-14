@@ -11,27 +11,21 @@ class StocksController extends BackController
   {
     $manager = $this->managers->getManagerOf('Stocks');
  
-    $listStocks = $manager->getListFiltered($request->getData("dot"));
+    $listStocksAF = $manager->getListFiltered("airFrance" , "All");
+    $listStocksCA = $manager->getListFiltered("airCanada" , "All");
+    $listStocksKLM = $manager->getListFiltered("KLM" , "All");
 
     // We now add listStocks to the view
-    $this->page->addVar('listStocks', $listStocks);
+    $this->page->addVar('listStocksAF', $listStocksAF);
+    $this->page->addVar('listStocksCA', $listStocksCA);
+    $this->page->addVar('listStocksKLM', $listStocksKLM);
   }
-
-  public function executeStocks(HTTPRequest $request)
-  {
-    $manager = $this->managers->getManagerOf('Stocks');
-  
-    $listStocks = $manager->getListFiltered($request->getData("dot"));
-
-    // We now add listStocks to the view
-    $this->page->addVar('listStocks', $listStocks);
-  }    
 
   public function executeFilter(HTTPRequest $request)
   {
     $manager = $this->managers->getManagerOf('Stocks');
-
-    $listStocks = $manager->getListFiltered($request->getData("dot"));
+      
+    $listStocks = $manager->getListFiltered($_GET['company'] , $_GET['dot']);
 
 
     // We now add listStocks to the view
@@ -44,10 +38,10 @@ class StocksController extends BackController
  
     $manager->decrease($request->getData('id'));
 
-    if (isset($_GET['dot'])) :
-      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    if ($_GET['dot']=='All') :
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks');
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   }   
 
@@ -57,10 +51,10 @@ class StocksController extends BackController
  
     $manager->increase($request->getData('id'));
 
-    if (isset($_GET['dot'])) :
-      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    if ($_GET['dot']=='All') :
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks');
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   } 
 
@@ -70,10 +64,10 @@ class StocksController extends BackController
  
     $manager->delete($request->getData('id'));
 
-    if (isset($_GET['dot'])) :
-      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+     if ($_GET['dot']=='All') :
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks');
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   } 
 
@@ -93,9 +87,10 @@ class StocksController extends BackController
       $request->postData("shelfLife") , 
       $request->postData("provider") , 
       $request->postData("users") , 
+      $request->getData("company")
     );
 
-    header('location: /projet-5-airfrance/Web/stocks-filter-'.$_POST['kit']);
+    header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_POST['kit']);
   } 
 
   public function executeUpdate(HTTPRequest $request)
@@ -108,10 +103,10 @@ class StocksController extends BackController
       $request->postData("shelfLife")
     );
     
-    if (isset($_GET['dot'])) :
-      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    if ($_GET['dot']=='All') :
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks');
+      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   }
 }
