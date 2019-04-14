@@ -42,6 +42,26 @@ class StocksManagerPDO extends StocksManager
     return $listStocks;
   }
 
+  public function infoDot($company , $dot) {
+    $sql = '
+      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
+      FROM stocks
+      WHERE company = ? AND dot = ?
+      ORDER BY itemPool ASC';
+
+    $requete = $this->dao->prepare($sql);
+    
+    $requete->execute(array($company , $dot));
+
+    $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
+    
+    $infoDot = $requete->fetchAll();
+    
+    $requete->closeCursor();
+       
+    return $infoDot;
+  }
+
   public function decrease($id)
   {
     $sql = '

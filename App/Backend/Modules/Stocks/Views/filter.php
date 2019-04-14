@@ -1,3 +1,204 @@
+
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT A -->
+<?php 
+
+$numberMissingDotA = 0;
+$partAlmostExpiringDotA = 0;
+$partExpiredDotA = 0;
+
+foreach ($infoDotA as $dotA) :
+	
+	if ($dotA['stockOnHand'] < $dotA['parStock']):
+		$numberMissingDotA = $numberMissingDotA + ($dotA['parStock'] - $dotA['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotA['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotA ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotA ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT G -->
+<?php 
+
+$numberMissingDotG = 0;
+$partAlmostExpiringDotG = 0;
+$partExpiredDotG = 0;
+
+foreach ($infoDotG as $dotG) :
+	
+	if ($dotG['stockOnHand'] < $dotG['parStock']):
+		$numberMissingDotG = $numberMissingDotG + ($dotG['parStock'] - $dotG['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotG['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotG ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotG ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT E -->
+<?php 
+
+$numberMissingDotE = 0;
+$partAlmostExpiringDotE = 0;
+$partExpiredDotE = 0;
+
+foreach ($infoDotE as $dotE) :
+	
+	if ($dotE['stockOnHand'] < $dotE['parStock']):
+		$numberMissingDotE = $numberMissingDotE + ($dotE['parStock'] - $dotE['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotE['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotE ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotE ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT Q -->
+<?php 
+
+$numberMissingDotQ = 0;
+$partAlmostExpiringDotQ = 0;
+$partExpiredDotQ = 0;
+
+foreach ($infoDotQ as $dotQ) :
+	
+	if ($dotQ['stockOnHand'] < $dotQ['parStock']):
+		$numberMissingDotQ = $numberMissingDotQ + ($dotQ['parStock'] - $dotQ['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotQ['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotQ ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotQ ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT T -->
+<?php 
+
+$numberMissingDotT = 0;
+$partAlmostExpiringDotT = 0;
+$partExpiredDotT = 0;
+
+foreach ($infoDotT as $dotT) :
+	
+	if ($dotT['stockOnHand'] < $dotT['parStock']):
+		$numberMissingDotT = $numberMissingDotT + ($dotT['parStock'] - $dotT['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotT['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotT ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotT ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT X -->
+<?php 
+
+$numberMissingDotX = 0;
+$partAlmostExpiringDotX = 0;
+$partExpiredDotX = 0;
+
+foreach ($infoDotX as $dotX) :
+	
+	if ($dotX['stockOnHand'] < $dotX['parStock']):
+		$numberMissingDotX = $numberMissingDotX + ($dotX['parStock'] - $dotX['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotX['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotX ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotX ++;
+	endif;
+endforeach;
+?>
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT ING -->
+<?php 
+
+$numberMissingDotING = 0;
+$partAlmostExpiringDotING = 0;
+$partExpiredDotING = 0;
+
+foreach ($infoDotING as $dotING) :
+	
+	if ($dotING['stockOnHand'] < $dotING['parStock']):
+		$numberMissingDotING = $numberMissingDotING + ($dotING['parStock'] - $dotING['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($dotING['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringDotING ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredDotING ++;
+	endif;
+endforeach;
+?>
+
+
+
+
 <!-- HEADER -->
 <div class="stockTitle">
 	<a href="/projet-5-airfrance/Web/" class="logoBack"><i class="far fa-hand-point-left"></i></a><h1 class="stockTitleText"><?= $_GET['company'] ?> Stock</h1>
@@ -8,17 +209,22 @@
 
 	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-All">
 		<button <?php 
-			if (isset($_GET['dot'])) : ?>class="dot" <?php 
-			else : ?> class="dot , selected" <?php endif; ?>>
+			if ($_GET['dot'] == 'All') : ?>class="dot , selected" <?php 
+			else : ?> class="dot" <?php endif; ?>>
 			ALL
 		</button>
 	</a>
 
 	<a href="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-filter-A">
 		<button <?php 
-			if (isset($_GET['dot']) && $_GET['dot'] == 'A') : ?> class="dot , selected" <?php 
+			if ($_GET['dot'] == 'A') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;A
+			<?php  
+			if ($partAlmostExpiringDotA > 0 || $numberMissingDotA > 0 || $partExpiredDotA > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -27,6 +233,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'G') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;G
+			<?php  
+			if ($partAlmostExpiringDotG > 0 || $numberMissingDotG > 0 || $partExpiredDotG > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -35,6 +246,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'E') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;E
+			<?php  
+			if ($partAlmostExpiringDotE > 0 || $numberMissingDotE > 0 || $partExpiredDotE > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -43,6 +259,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'Q') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;Q
+			<?php  
+			if ($partAlmostExpiringDotQ > 0 || $numberMissingDotQ > 0 || $partExpiredDotQ > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -51,6 +272,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'T') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;T
+			<?php  
+			if ($partAlmostExpiringDotT > 0 || $numberMissingDotT > 0 || $partExpiredDotT > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -59,6 +285,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'X') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			DOT&nbsp;X
+			<?php  
+			if ($partAlmostExpiringDotX > 0 || $numberMissingDotX > 0 || $partExpiredDotX > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 
@@ -67,6 +298,11 @@
 			if (isset($_GET['dot']) && $_GET['dot'] == 'ING') : ?> class="dot , selected" <?php 
 			else : ?> class="dot" <?php endif ?>>
 			ING
+			<?php  
+			if ($partAlmostExpiringDotING > 0 || $numberMissingDotING > 0 || $partExpiredDotING > 0) :
+			?>
+			<i class="fas fa-exclamation-triangle , important"></i>
+			<?php endif; ?>
 		</button>
 	</a>
 </div>

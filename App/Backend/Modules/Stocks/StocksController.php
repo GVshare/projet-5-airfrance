@@ -27,9 +27,24 @@ class StocksController extends BackController
       
     $listStocks = $manager->getListFiltered($_GET['company'] , $_GET['dot']);
 
+    $infoDotA = $manager->infoDot($_GET['company'] , "A");
+    $infoDotG = $manager->infoDot($_GET['company'] , "G");
+    $infoDotE = $manager->infoDot($_GET['company'] , "E");
+    $infoDotQ = $manager->infoDot($_GET['company'] , "Q");
+    $infoDotT = $manager->infoDot($_GET['company'] , "T");
+    $infoDotX = $manager->infoDot($_GET['company'] , "X");
+    $infoDotING = $manager->infoDot($_GET['company'] , "ING");
 
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
+
+    $this->page->addVar('infoDotA', $infoDotA);
+    $this->page->addVar('infoDotG', $infoDotG);
+    $this->page->addVar('infoDotE', $infoDotE);
+    $this->page->addVar('infoDotQ', $infoDotQ);
+    $this->page->addVar('infoDotT', $infoDotT);
+    $this->page->addVar('infoDotX', $infoDotX);
+    $this->page->addVar('infoDotING', $infoDotING);
   } 
 
   public function executeDecrease(HTTPRequest $request)
