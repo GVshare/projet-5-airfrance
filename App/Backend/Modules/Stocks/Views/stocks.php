@@ -7,13 +7,14 @@
 
 <!-- SUBTITLES / FILTERS -->
 <div id="navDot">
+	<a href="/projet-5-airfrance/Web/stocks"><button class="dot">ALL</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-A"><button class="dot">DOT&nbsp;A</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-G"><button class="dot">DOT&nbsp;G</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-E"><button class="dot">DOT&nbsp;E</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-Q"><button class="dot">DOT&nbsp;Q</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-T"><button class="dot">DOT&nbsp;T</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-X"><button class="dot">DOT&nbsp;X</button></a>
-	<a href="/projet-5-airfrance/Web/stocks-filter-ING"><button class="dot">INGREDIENTS</button></a>
+	<a href="/projet-5-airfrance/Web/stocks-filter-ING"><button class="dot">ING</button></a>
 </div>
 
 <!-- STOCK INVENTORY TABLE TITLE -->

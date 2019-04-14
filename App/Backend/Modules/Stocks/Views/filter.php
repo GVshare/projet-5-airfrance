@@ -1,5 +1,3 @@
-
-
 <!-- HEADER -->
 <div class="stockTitle">
 	<a href="/projet-5-airfrance/Web/" class="logoBack"><i class="far fa-hand-point-left"></i></a><h1 class="stockTitleText">AirFrance Stock</h1>
@@ -7,13 +5,14 @@
 
 <!-- SUBTITLES / FILTERS -->
 <div id="navDot">
+	<a href="/projet-5-airfrance/Web/stocks"><button class="dot">ALL</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-A"><button class="dot">DOT&nbsp;A</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-G"><button class="dot">DOT&nbsp;G</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-E"><button class="dot">DOT&nbsp;E</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-Q"><button class="dot">DOT&nbsp;Q</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-T"><button class="dot">DOT&nbsp;T</button></a>
 	<a href="/projet-5-airfrance/Web/stocks-filter-X"><button class="dot">DOT&nbsp;X</button></a>
-	<a href="/projet-5-airfrance/Web/stocks-filter-ING"><button class="dot">INGREDIENTS</button></a>
+	<a href="/projet-5-airfrance/Web/stocks-filter-ING"><button class="dot">ING</button></a>
 </div>
 
 <!-- STOCK INVENTORY TABLE TITLE -->
@@ -39,13 +38,13 @@
 		<th><?= $stock['itemPool']?></th>
 		<th><?= $stock['designation']?></th>
 		<th><?= $stock['partNumber']?></th>
-		<th><?= $stock['serialNumber']?><a href="/projet-5-airfrance/Web/stocks-<?= $stock['id'] ?>"><i class="fas fa-pencil-alt"></i></a></th>
+		<th><?= $stock['serialNumber']?><a href="/projet-5-airfrance/Web/stocks-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>"><i class="fas fa-pencil-alt"></i></a></th>
 		<th><?= $stock['parStock']?></th>
 
 		<!-- If stock on hand is less than par stock change class to 'missStock' (change background color to red) -->
 		<th <?php if ($stock['stockOnHand'] < $stock['parStock']): ?>class="missStock"
 			<?php endif ?>
-		><a href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>"><i class="fas fa-minus-circle"></i></a><?= $stock['stockOnHand']?><a href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>"><i class="fas fa-plus-circle"></i></a></th>
+		><a href="/projet-5-airfrance/Web/stocks-decrease-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>"><i class="fas fa-minus-circle"></i></a><?= $stock['stockOnHand']?><a href="/projet-5-airfrance/Web/stocks-increase-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>"><i class="fas fa-plus-circle"></i></a></th>
 
 		<!-- Calculate the time  left in days between today and the ShelfLife -->
 		<?php  
@@ -63,7 +62,7 @@
 
 		<th><?= $stock['provider']?></th>
 		<th><?= $stock['users']?></th>
-		<th class="deletePart"><a href="/projet-5-airfrance/Web/stocks-delete-<?= $stock['id'] ?>"><i class="fas fa-trash-alt"></i></a></th>
+		<th class="deletePart"><a href="/projet-5-airfrance/Web/stocks-delete-<?= $stock['id'] ?>-filter-<?= $stock['dot'] ?>"><i class="fas fa-trash-alt"></i></a></th>
 	</tr>
 
 	<?php 	
@@ -73,7 +72,7 @@
 <!-- ADD ITEM TO STOCK TABLE -->
 </table>
 
-<form action="/projet-5-airfrance/Web/stocks-add" method="post" name="newPart">
+<form action="/projet-5-airfrance/Web/stocks-add-filter-<?= $stock['dot'] ?>" method="post" name="newPart">
 	<table id="tableCommand">
 		<tr>
 			<th>Item Pool</th>
@@ -122,7 +121,7 @@
 if (isset($_GET['id'])) {
 ?>
 <div id="box">
-	<form method="POST" action="/projet-5-airfrance/Web/stocks-update-<?= $_GET['id'] ?>">
+	<form method="POST" action="/projet-5-airfrance/Web/stocks-update-<?= $_GET['id'] ?>-filter-<?= $stock['dot'] ?>">
 		<input id="newSerialN" type="text" name="serialNumber" placeholder="Your new Serial Number" required>
 		<input id="newShelfLife" type="date" name="shelfLife" placeholder="New shelf Life YYYY-MM-DD" required>
 		<div>

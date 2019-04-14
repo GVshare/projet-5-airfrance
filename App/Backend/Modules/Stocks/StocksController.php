@@ -43,7 +43,11 @@ class StocksController extends BackController
  
     $manager->decrease($request->getData('id'));
 
-    header('location: /projet-5-airfrance/Web/stocks');
+    if (isset($_GET['dot'])) :
+      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    else :
+      header('location: /projet-5-airfrance/Web/stocks');
+    endif;
   }   
 
   public function executeIncrease(HTTPRequest $request)
@@ -52,7 +56,11 @@ class StocksController extends BackController
  
     $manager->increase($request->getData('id'));
 
-    header('location: /projet-5-airfrance/Web/stocks');
+    if (isset($_GET['dot'])) :
+      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    else :
+      header('location: /projet-5-airfrance/Web/stocks');
+    endif;
   } 
 
   public function executeDelete(HTTPRequest $request)
@@ -61,7 +69,11 @@ class StocksController extends BackController
  
     $manager->delete($request->getData('id'));
 
-    header('location: /projet-5-airfrance/Web/stocks');
+    if (isset($_GET['dot'])) :
+      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    else :
+      header('location: /projet-5-airfrance/Web/stocks');
+    endif;
   } 
 
   public function executeAdd(HTTPRequest $request)
@@ -81,8 +93,8 @@ class StocksController extends BackController
       $request->postData("provider") , 
       $request->postData("users") , 
     );
-
-    header('location: /projet-5-airfrance/Web/stocks');
+    
+    header('location: /projet-5-airfrance/Web/stocks-filter-'.$_POST['kit']);
   } 
 
   public function executeUpdate(HTTPRequest $request)
@@ -95,6 +107,10 @@ class StocksController extends BackController
       $request->postData("shelfLife")
     );
     
+    if (isset($_GET['dot'])) :
+      header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
+    else :
     header('location: /projet-5-airfrance/Web/stocks');
+    endif;
   }
 }
