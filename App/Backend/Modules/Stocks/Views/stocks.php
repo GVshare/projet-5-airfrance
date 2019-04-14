@@ -1,5 +1,3 @@
-
-
 <!-- HEADER -->
 <div class="stockTitle">
 	<a href="/projet-5-airfrance/Web/" class="logoBack"><i class="far fa-hand-point-left"></i></a><h1 class="stockTitleText">AirFrance Stock</h1>

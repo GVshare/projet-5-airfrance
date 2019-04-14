@@ -20,7 +20,7 @@ class StocksController extends BackController
   public function executeStocks(HTTPRequest $request)
   {
     $manager = $this->managers->getManagerOf('Stocks');
- 
+  
     $listStocks = $manager->getList();
 
     // We now add listStocks to the view
@@ -93,7 +93,7 @@ class StocksController extends BackController
       $request->postData("provider") , 
       $request->postData("users") , 
     );
-    
+
     header('location: /projet-5-airfrance/Web/stocks-filter-'.$_POST['kit']);
   } 
 
