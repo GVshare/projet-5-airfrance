@@ -45,6 +45,11 @@ button:hover {
 	border-color: blue;
 }
 
+.selected {
+	background-color: white;
+	border-color: blue;
+}
+
 #statusGood {
 	font-size: 1em;
 	color: green;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
   <route url="/projet-5-airfrance/Web/" module="Stocks" action="index" ></route>
-  <route url="/projet-5-airfrance/Web/stocks" module="Stocks" action="stocks" ></route>
+  <route url="/projet-5-airfrance/Web/stocks" module="Stocks" action="filter" ></route>
   <route url="/projet-5-airfrance/Web/stocks-filter-([A-Z]+)" module="Stocks" action="filter" vars="dot"></route>
 
 
-  <route url="/projet-5-airfrance/Web/stocks-([0-9]+)" module="Stocks" action="stocks" vars="id"></route>
+  <route url="/projet-5-airfrance/Web/stocks-([0-9]+)" module="Stocks" action="filter" vars="id"></route>
   <route url="/projet-5-airfrance/Web/stocks-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="filter" vars="id,dot"></route>
 
   <route url="/projet-5-airfrance/Web/stocks-decrease-([0-9]+)" module="Stocks" action="decrease" vars="id"></route>

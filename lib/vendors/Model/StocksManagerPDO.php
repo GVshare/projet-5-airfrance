@@ -30,11 +30,19 @@ class StocksManagerPDO extends StocksManager
 
   public function getListFiltered($dot)
   {
-    $sql = '
-    SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
-    FROM stocks
-    WHERE company = "airFrance" AND dot = ?
-    ORDER BY itemPool ASC';
+    if ($dot == NULL) :
+      $sql = '
+      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
+      FROM stocks
+      WHERE company = "airFrance"
+      ORDER BY itemPool ASC';
+    else :
+      $sql = '
+      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
+      FROM stocks
+      WHERE company = "airFrance" AND dot = ?
+      ORDER BY itemPool ASC';
+    endif;
 
     $requete = $this->dao->prepare($sql);
     $requete->execute(array($dot));

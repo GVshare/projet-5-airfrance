@@ -11,7 +11,7 @@ class StocksController extends BackController
   {
     $manager = $this->managers->getManagerOf('Stocks');
  
-    $listStocks = $manager->getList();
+    $listStocks = $manager->getListFiltered($request->getData("dot"));
 
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
@@ -21,7 +21,7 @@ class StocksController extends BackController
   {
     $manager = $this->managers->getManagerOf('Stocks');
   
-    $listStocks = $manager->getList();
+    $listStocks = $manager->getListFiltered($request->getData("dot"));
 
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
@@ -32,6 +32,7 @@ class StocksController extends BackController
     $manager = $this->managers->getManagerOf('Stocks');
 
     $listStocks = $manager->getListFiltered($request->getData("dot"));
+
 
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
@@ -110,7 +111,7 @@ class StocksController extends BackController
     if (isset($_GET['dot'])) :
       header('location: /projet-5-airfrance/Web/stocks-filter-'.$_GET['dot']);
     else :
-    header('location: /projet-5-airfrance/Web/stocks');
+      header('location: /projet-5-airfrance/Web/stocks');
     endif;
   }
 }
