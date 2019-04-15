@@ -27,6 +27,7 @@ foreach ($infoDotA as $dotA) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT G -->
 <?php 
 
@@ -55,6 +56,7 @@ foreach ($infoDotG as $dotG) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT E -->
 <?php 
 
@@ -83,6 +85,7 @@ foreach ($infoDotE as $dotE) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT Q -->
 <?php 
 
@@ -111,6 +114,7 @@ foreach ($infoDotQ as $dotQ) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT T -->
 <?php 
 
@@ -139,6 +143,7 @@ foreach ($infoDotT as $dotT) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT X -->
 <?php 
 
@@ -167,6 +172,7 @@ foreach ($infoDotX as $dotX) :
 	endif;
 endforeach;
 ?>
+
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF DOT ING -->
 <?php 
 
@@ -196,7 +202,9 @@ foreach ($infoDotING as $dotING) :
 endforeach;
 ?>
 
-
+<!-- ========================================================================================================================================== -->
+<!-- ========================================================================================================================================== -->
+<!-- ========================================================================================================================================== -->
 
 
 <!-- HEADER -->

@@ -1,4 +1,3 @@
-
 <!-- CHECKING THE MISSING/EXPIRING ITEMS OF AIRFRANCE -->
 <?php 
 
@@ -28,7 +27,7 @@ foreach ($listStocksAF as $stockAF) :
 endforeach;
 ?>
 
-<!-- CHECKING THE MISSING/EXPIRING ITEMS OF AIRFRANCE -->
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF AIRCANADA -->
 <?php 
 
 $numberMissingCA = 0;
@@ -86,11 +85,41 @@ foreach ($listStocksKLM as $stockKLM) :
 endforeach;
 ?>
 
+<!-- CHECKING THE MISSING/EXPIRING ITEMS OF AIREUROPA -->
+<?php 
+
+$numberMissingUX = 0;
+$partAlmostExpiringUX = 0;
+$partExpiredUX = 0;
+
+foreach ($listStocksUX as $stockUX) :
+	
+	if ($stockUX['stockOnHand'] < $stockUX['parStock']):
+		$numberMissingUX = $numberMissingUX + ($stockUX['parStock'] - $stockUX['stockOnHand']);
+	endif;
+	
+	$dateExpire = strtotime($stockUX['shelfLife']);
+	$dateNow = time();
+	$dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+	
+
+	if ($dateDifference > 0 && $dateDifference < 30) :
+		$partAlmostExpiringUX ++;
+	endif;
+
+	if ($dateDifference < 0) :
+		$partExpiredUX ++;
+	endif;
+endforeach;
+?>
+
 <!-- =================================================================================================================================== -->
 <!-- =================================================================================================================================== -->
 <!-- =================================================================================================================================== -->
 
 <header>
+	<a href="/projet-5-airfrance/Web/communication" id="communicationLogo"><i class="fas fa-envelope"></i></a>
 	<h1>EZE-KI Allotment</h1>
 </header>
 
@@ -194,7 +223,38 @@ endforeach;
 	?>
 </div>
 
+<div class="companyStockSummary">
+	<button><a href="/projet-5-airfrance/Web/stocks-airEuropa-All">Air Europa</a></button>
+	<?php
+	if ($numberMissingUX === 0 && $partAlmostExpiringUX === 0 && $partExpiredUX === 0) :
+	?>
+		<span id="statusGood"><i class="fas fa-smile-beam"></i> ALL GOOD ! <i class="fas fa-smile-beam"></i></span>
+	<?php
+	endif;
+	?>
 
+	<?php
+	if ($numberMissingUX > 0) :
+	?>	
+		<span id="missingPartText"><i class="fas fa-exclamation-triangle"></i> Parts missing : <?= $numberMissingUX ?></span>
+	<?php	 
+	endif;
+
+	if ($partAlmostExpiringUX > 0) :
+	?>
+		<span id="partAlmostExpiringText"><i class="fas fa-clock"></i> Part Expiring in less than 30 days : <?= $partAlmostExpiringUX ?></span>
+	<?php
+	endif;
+	?>
+
+	<?php
+	if ($partExpiredUX > 0) :
+	?>
+		<span id="partExpiredText"><i class="fas fa-clock"></i> Part Expired : <?= $partExpiredUX ?></span>
+	<?php
+	endif; 
+	?>
+</div>
 
 <i class="fas fa-fighter-jet" id="imgPlane"></i>
 

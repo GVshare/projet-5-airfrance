@@ -14,11 +14,13 @@ class StocksController extends BackController
     $listStocksAF = $manager->getListFiltered("airFrance" , "All");
     $listStocksCA = $manager->getListFiltered("airCanada" , "All");
     $listStocksKLM = $manager->getListFiltered("KLM" , "All");
+    $listStocksUX = $manager->getListFiltered("airEuropa" , "All");
 
     // We now add listStocks to the view
     $this->page->addVar('listStocksAF', $listStocksAF);
     $this->page->addVar('listStocksCA', $listStocksCA);
     $this->page->addVar('listStocksKLM', $listStocksKLM);
+    $this->page->addVar('listStocksUX', $listStocksUX);
   }
 
   public function executeFilter(HTTPRequest $request)
@@ -38,6 +40,7 @@ class StocksController extends BackController
     // We now add listStocks to the view
     $this->page->addVar('listStocks', $listStocks);
 
+    // We now add infoDots to the view
     $this->page->addVar('infoDotA', $infoDotA);
     $this->page->addVar('infoDotG', $infoDotG);
     $this->page->addVar('infoDotE', $infoDotE);

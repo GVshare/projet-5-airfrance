@@ -11,6 +11,27 @@ h1 {
 	text-align: center;
 	color: darkblue;
 	width: 100%;
+	margin-right: 7.5%;
+}
+
+#communicationLogo {
+	display: flex;
+	color: darkblue;
+	font-size: 2.5em;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 7.5%;
+	border: 3px solid darkblue;
+	height: 1.5em;
+	width: 2em;
+	border-radius: 50%;
+	align-items: center;
+	justify-content: center;
+}
+
+#communicationLogo:hover {
+	color: orange;
+	border: 3px solid orange;
 }
 
 .companyStockSummaryTop {
@@ -125,14 +146,19 @@ button:hover {
 	padding-left: 2%;
 }
 
-.logoBack:hover {
-	font-size: 2.1em;
+.logoBackBlue {
+	color: darkblue;
+	font-size: 2em;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding-left: 2%;
+}
+
+.logoBack:hover , .logoBackBlue:hover {
 	text-shadow: gold 1px 0 10px;
 }
 
 table {
-	margin-top: 
-	border: red 1px solid;
 	width: 95%;
 	padding-top: 15vh;
 	margin-left: auto;
@@ -259,4 +285,45 @@ form {
 
 .important {
 	color: red;
+}
+
+/*======================================================================================================================================*/
+#comSection {
+	display: flex;
+}
+
+#communication {
+	width: 70%;
+	height: 100vh;
+}
+
+aside {
+	height: 100vh;
+	width: 30%;
+	background-color: lightblue;
+	border: darkblue 2px solid;
+	border-top-right-radius: 20px;
+}
+
+.topicButton {
+	width: 90%;
+	margin-top: 20px;
+	margin-top: 30px;
+	align-items: center;
+}
+
+.inputTopic {
+	font-size: 1.5em;
+	margin-left: 5%;
+	margin-top: 30px;
+	width: 90%;
+}
+
+.postsOnGoing {
+	border: 1px red dashed;
+	text-align: center;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }

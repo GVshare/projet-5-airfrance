@@ -30,4 +30,16 @@
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)-update-([0-9]+)" module="Stocks" action="update" vars="company,dot,id"></route>
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-update-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="update" vars="company,id,dot"></route>
 
+
+
+<!-- ============================================================================================================================================== -->
+<!-- =========================================================== COMMUNICATION PAGE =============================================================== -->
+<!-- ============================================================================================================================================== -->
+
+
+  <!-- ROUTE TO GO TO INDEX PAGE -->
+  <route url="/projet-5-airfrance/Web/communication" module="Comms" action="index" ></route>
+
+  <route url="/projet-5-airfrance/Web/communication-newPost" module="Comms" action="newPost" ></route>
+
 </routes>
