@@ -11,8 +11,19 @@ class CommsController extends BackController
   {
     $manager = $this->managers->getManagerOf('Comms');
 
-    $posts = $manager->getOpenPosts();
+    $postsOpen = $manager->getOpenPosts();
+    $postsClose = $manager->getClosePosts();
     
-    $this->page->addVar('posts', $posts);
+    $this->page->addVar('postsOpen', $postsOpen);
+    $this->page->addVar('postsClose', $postsClose);
+  }
+
+  public function executeNewPost(HTTPRequest $request)
+  {
+    $manager = $this->managers->getManagerOf('Comms');
+
+    $posts = $manager->newPost(htmlspecialchars($_POST["authorTopic"]) , htmlspecialchars($_POST["titleTopic"]));
+    
+    header('location: /projet-5-airfrance/Web/communication');
   }
 }

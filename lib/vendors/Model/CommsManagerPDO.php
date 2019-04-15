@@ -10,7 +10,7 @@ class CommsManagerPDO extends CommsManager
 			SELECT id , author , title , dateOpen , status
 			FROM posts
 			WHERE status = 1
-			ORDER BY dateOpen ASC';
+			ORDER BY dateOpen DESC';
 
 		$requete = $this->dao->query($sql);
 
@@ -21,5 +21,33 @@ class CommsManagerPDO extends CommsManager
 		$requete->closeCursor();
 
 		return $posts;
+	}
+
+	public function getClosePosts() {
+		$sql = '
+			SELECT id , author , title , dateOpen , status
+			FROM posts
+			WHERE status = 0
+			ORDER BY dateOpen DESC';
+
+		$requete = $this->dao->query($sql);
+
+		$requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Posts');
+
+		$posts = $requete->fetchAll();
+
+		$requete->closeCursor();
+
+		return $posts;
+	}
+
+	public function newPost($author , $title) {
+		$sql = '
+		    INSERT INTO posts (author , title , dateOpen) 
+		    VALUES (? , ? , NOW() )';
+
+	    $requete = $this->dao->prepare($sql);
+	    
+	    $requete->execute(array($author , $title));
 	}
 }

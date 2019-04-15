@@ -292,17 +292,23 @@ form {
 	display: flex;
 }
 
+.titleComm {
+	margin-right: 0;
+}
+
 #communication {
 	width: 70%;
 	height: 100vh;
 }
 
 aside {
-	height: 100vh;
+	height: 85vh;
 	width: 30%;
 	background-color: lightblue;
 	border: darkblue 2px solid;
 	border-top-right-radius: 20px;
+	overflow-y: auto;
+	direction: rtl;
 }
 
 .topicButton {
@@ -321,9 +327,30 @@ aside {
 
 .postsOnGoing {
 	border: 1px red dashed;
+	border-radius: 10px;
 	text-align: center;
 	margin-left: 5%;
 	margin-right: 5%;
 	padding-top: 1%;
 	padding-bottom: 1%;
+}
+
+.postsOnGoing:hover {
+	background-color: red;
+	color: white;
+}
+
+.postsClosed {
+	border: 1px green dashed;
+	border-radius: 10px;
+	text-align: center;
+	margin-left: 5%;
+	margin-right: 5%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+.postsClosed:hover {
+	background-color: green;
+	color: white;
 }
