@@ -7,12 +7,12 @@
 		<h3>On going communications</h3>
 
 		<?php foreach ($postsOpen as $postOpen) : ?>
-			<a href="#/"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " at " . $postOpen["dateOpen"] ?></p></a>
+			<a href="#/"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
 		<?php endforeach ?>
 
 		<h3>Archives</h3>
 		<?php foreach ($postsClose as $postClose) : ?>
-			<a href="#/"><p class="postsClosed"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " at " . $postClose["dateOpen"] ?></p></a>
+			<a href="#/"><p class="postsClosed"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " on " . $postClose["dateOpen"] ?></p></a>
 		<?php endforeach ?>
 	</aside>
 	<div id="communication">

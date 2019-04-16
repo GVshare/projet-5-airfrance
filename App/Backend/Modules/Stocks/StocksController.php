@@ -94,18 +94,18 @@ class StocksController extends BackController
     $manager = $this->managers->getManagerOf('Stocks');
     
     $manager->add(
-      $request->postData("itemPool") , 
-      $request->postData("kit") , 
-      $request->postData("extention") , 
-      $request->postData("designation") , 
-      $request->postData("partNumber") , 
-      $request->postData("serialNumber") , 
-      $request->postData("parStock") , 
-      $request->postData("stockOnHand") , 
-      $request->postData("shelfLife") , 
-      $request->postData("provider") , 
-      $request->postData("users") , 
-      $request->getData("company")
+      htmlspecialchars($request->postData("itemPool")) , 
+      htmlspecialchars($request->postData("kit")) , 
+      htmlspecialchars($request->postData("extention")) , 
+      htmlspecialchars($request->postData("designation")) , 
+      htmlspecialchars($request->postData("partNumber")) , 
+      htmlspecialchars($request->postData("serialNumber")) , 
+      htmlspecialchars($request->postData("parStock")) , 
+      htmlspecialchars($request->postData("stockOnHand")) , 
+      htmlspecialchars($request->postData("shelfLife")) , 
+      htmlspecialchars($request->postData("provider")) , 
+      htmlspecialchars($request->postData("users")) , 
+      htmlspecialchars($request->getData("company"))
     );
 
     header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_POST['kit']);
@@ -117,8 +117,8 @@ class StocksController extends BackController
     
     $manager->update(
       $request->getData("id") ,  
-      $request->postData("serialNumber") , 
-      $request->postData("shelfLife")
+      htmlspecialchars($request->postData("serialNumber")) , 
+      htmlspecialchars($request->postData("shelfLife"))
     );
     
     if ($_GET['dot']=='All') :
