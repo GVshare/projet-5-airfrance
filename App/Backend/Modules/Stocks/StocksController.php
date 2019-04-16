@@ -22,16 +22,10 @@ class StocksController extends BackController
     $this->page->addVar('listStocksKLM', $listStocksKLM);
     $this->page->addVar('listStocksUX', $listStocksUX);
 
-    // Get the missing, expiring and expired items of AirFrance
+    // Get the missing, expiring and expired items by Company
     $this->checkInfo("AF" , "airFrance");
-
-    // Get the missing, expiring and expired items of AirFrance
     $this->checkInfo("CA" , "airCanada");
-
-    // Get the missing, expiring and expired items of AirFrance
     $this->checkInfo("KLM" , "KLM");
-
-    // Get the missing, expiring and expired items of AirFrance
     $this->checkInfo("UX" , "airEuropa");
   }
 
@@ -60,6 +54,15 @@ class StocksController extends BackController
     $this->page->addVar('infoDotT', $infoDotT);
     $this->page->addVar('infoDotX', $infoDotX);
     $this->page->addVar('infoDotING', $infoDotING);
+
+    // Check if any missing, expiring or expired items by Dot
+    $this->getInfoDot("A");
+    $this->getInfoDot("G");
+    $this->getInfoDot("E");
+    $this->getInfoDot("Q");
+    $this->getInfoDot("T");
+    $this->getInfoDot("X");
+    $this->getInfoDot("ING");
   } 
 
   public function executeDecrease(HTTPRequest $request)
@@ -176,5 +179,45 @@ class StocksController extends BackController
     $this->page->addVar('numberMissing'.$id, $numberMissing);
     $this->page->addVar('partAlmostExpiring'.$id, $partAlmostExpiring);
     $this->page->addVar('partExpired'.$id, $partExpired);
+  }
+
+  public function getInfoDot($dot) {
+
+    $manager = $this->managers->getManagerOf('Stocks');
+
+    $infoDot = 'infoDot'.$dot;
+
+    $infoDot = $manager->infoDot($_GET['company'] , $dot);
+    
+    $numberMissingDot = '$numberMissingDot'.$dot;
+    $partAlmostExpiringDot = '$partAlmostExpiringDot'.$dot;
+    $partExpiredDot = '$partExpiredDot'.$dot;
+
+    $numberMissingDot = 0;
+    $partAlmostExpiringDot = 0;
+    $partExpiredDot = 0;
+
+    foreach ($infoDot as $infoDot) :
+      
+      if ($infoDot['stockOnHand'] < $infoDot['parStock']):
+        $numberMissingDot = $numberMissingDot + ($infoDot['parStock'] - $infoDot['stockOnHand']);
+      endif;
+      
+      $dateExpire = strtotime($infoDot['shelfLife']);
+      $dateNow = time();
+      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+      if ($dateDifference > 0 && $dateDifference < 30) :
+        $partAlmostExpiringDot ++;
+      endif;
+
+      if ($dateDifference < 0) :
+        $partExpiredDot ++;
+      endif;
+    endforeach;
+
+    $this->page->addVar('numberMissingDot'.$dot , $numberMissingDot);
+    $this->page->addVar('partAlmostExpiringDot'.$dot , $partAlmostExpiringDot);
+    $this->page->addVar('partExpiredDot'.$dot, $partExpiredDot);
   }
 }
