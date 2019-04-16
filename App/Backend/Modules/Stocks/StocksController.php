@@ -10,7 +10,7 @@ class StocksController extends BackController
   public function executeIndex(HTTPRequest $request)
   {
     $manager = $this->managers->getManagerOf('Stocks');
- 
+
     $listStocksAF = $manager->getListFiltered("airFrance" , "All");
     $listStocksCA = $manager->getListFiltered("airCanada" , "All");
     $listStocksKLM = $manager->getListFiltered("KLM" , "All");
@@ -23,118 +23,16 @@ class StocksController extends BackController
     $this->page->addVar('listStocksUX', $listStocksUX);
 
     // Get the missing, expiring and expired items of AirFrance
-    $numberMissingAF = 0;
-    $partAlmostExpiringAF = 0;
-    $partExpiredAF = 0;
-
-    foreach ($listStocksAF as $stockAF) :
-      
-      if ($stockAF['stockOnHand'] < $stockAF['parStock']):
-        $numberMissingAF = $numberMissingAF + ($stockAF['parStock'] - $stockAF['stockOnHand']);
-      endif;
-      
-      $dateExpire = strtotime($stockAF['shelfLife']);
-      $dateNow = time();
-      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
-
-      
-
-      if ($dateDifference > 0 && $dateDifference < 30) :
-        $partAlmostExpiringAF ++;
-      endif;
-
-      if ($dateDifference < 0) :
-        $partExpiredAF ++;
-      endif;
-    endforeach;
-    $this->page->addVar('numberMissingAF', $numberMissingAF);
-    $this->page->addVar('partAlmostExpiringAF', $partAlmostExpiringAF);
-    $this->page->addVar('partExpiredAF', $partExpiredAF);
+    $this->checkInfo("AF" , "airFrance");
 
     // Get the missing, expiring and expired items of AirFrance
-    $numberMissingCA = 0;
-    $partAlmostExpiringCA = 0;
-    $partExpiredCA = 0;
-
-    foreach ($listStocksCA as $stockCA) :
-      
-      if ($stockCA['stockOnHand'] < $stockCA['parStock']):
-        $numberMissingCA = $numberMissingCA + ($stockCA['parStock'] - $stockCA['stockOnHand']);
-      endif;
-      
-      $dateExpire = strtotime($stockCA['shelfLife']);
-      $dateNow = time();
-      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
-
-      
-
-      if ($dateDifference > 0 && $dateDifference < 30) :
-        $partAlmostExpiringCA ++;
-      endif;
-
-      if ($dateDifference < 0) :
-        $partExpiredCA ++;
-      endif;
-    endforeach;
-    $this->page->addVar('numberMissingCA', $numberMissingCA);
-    $this->page->addVar('partAlmostExpiringCA', $partAlmostExpiringCA);
-    $this->page->addVar('partExpiredCA', $partExpiredCA);
+    $this->checkInfo("CA" , "airCanada");
 
     // Get the missing, expiring and expired items of AirFrance
-    $numberMissingKLM = 0;
-    $partAlmostExpiringKLM = 0;
-    $partExpiredKLM = 0;
+    $this->checkInfo("KLM" , "KLM");
 
-    foreach ($listStocksKLM as $stockKLM) :
-      
-      if ($stockKLM['stockOnHand'] < $stockKLM['parStock']):
-        $numberMissingKLM = $numberMissingKLM + ($stockKLM['parStock'] - $stockKLM['stockOnHand']);
-      endif;
-      
-      $dateExpire = strtotime($stockKLM['shelfLife']);
-      $dateNow = time();
-      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
-
-      if ($dateDifference > 0 && $dateDifference < 30) :
-        $partAlmostExpiringKLM ++;
-      endif;
-
-      if ($dateDifference < 0) :
-        $partExpiredKLM ++;
-      endif;
-    endforeach;
-    $this->page->addVar('numberMissingKLM', $numberMissingKLM);
-    $this->page->addVar('partAlmostExpiringKLM', $partAlmostExpiringKLM);
-    $this->page->addVar('partExpiredKLM', $partExpiredKLM);
-
-
-    $numberMissingUX = 0;
-    $partAlmostExpiringUX = 0;
-    $partExpiredUX = 0;
-
-    foreach ($listStocksUX as $stockUX) :
-      
-      if ($stockUX['stockOnHand'] < $stockUX['parStock']):
-        $numberMissingUX = $numberMissingUX + ($stockUX['parStock'] - $stockUX['stockOnHand']);
-      endif;
-      
-      $dateExpire = strtotime($stockUX['shelfLife']);
-      $dateNow = time();
-      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
-
-      
-
-      if ($dateDifference > 0 && $dateDifference < 30) :
-        $partAlmostExpiringUX ++;
-      endif;
-
-      if ($dateDifference < 0) :
-        $partExpiredUX ++;
-      endif;
-    endforeach;
-    $this->page->addVar('numberMissingUX', $numberMissingUX);
-    $this->page->addVar('partAlmostExpiringUX', $partAlmostExpiringUX);
-    $this->page->addVar('partExpiredUX', $partExpiredUX);
+    // Get the missing, expiring and expired items of AirFrance
+    $this->checkInfo("UX" , "airEuropa");
   }
 
   public function executeFilter(HTTPRequest $request)
@@ -240,5 +138,43 @@ class StocksController extends BackController
     else :
       header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
+  }
+
+  public function checkInfo($id,$companyName) {
+
+    $manager = $this->managers->getManagerOf('Stocks');
+
+    $company = '$listStocks'.$id;
+    $company = $manager->getListFiltered($companyName , "All");
+
+    $numberMissing = '$numberMissing'.$id;
+    $partAlmostExpiring = '$partAlmostExpiring'.$id;
+    $partExpired = '$partExpired'.$id;
+
+    $numberMissing = 0;
+    $partAlmostExpiring = 0;
+    $partExpired = 0;
+
+    foreach ($company as $stock) :
+      
+      if ($stock['stockOnHand'] < $stock['parStock']):
+        $numberMissing = $numberMissing + ($stock['parStock'] - $stock['stockOnHand']);
+      endif;
+      
+      $dateExpire = strtotime($stock['shelfLife']);
+      $dateNow = time();
+      $dateDifference = ($dateExpire - $dateNow)/(60*60*24);
+
+      if ($dateDifference > 0 && $dateDifference < 30) :
+        $partAlmostExpiring ++;
+      endif;
+
+      if ($dateDifference < 0) :
+        $partExpired ++;
+      endif;
+    endforeach;
+    $this->page->addVar('numberMissing'.$id, $numberMissing);
+    $this->page->addVar('partAlmostExpiring'.$id, $partAlmostExpiring);
+    $this->page->addVar('partExpired'.$id, $partExpired);
   }
 }
