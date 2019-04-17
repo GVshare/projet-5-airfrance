@@ -143,7 +143,7 @@ class StocksController extends BackController
     endif;
   }
 
-  public function checkInfo($id,$companyName) {
+  public function checkInfo($id, $companyName) {
 
     $manager = $this->managers->getManagerOf('Stocks');
 

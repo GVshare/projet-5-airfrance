@@ -225,16 +225,16 @@
 					<option value="ING">INGREDIENTS</option>
 				</select>
 			</th>
-			<th><input type="text" name="extention"></th>
-			<th><input type="text" name="designation" ></th>
-			<th><input type="text" name="partNumber" ></th>
-			<th><input type="text" name="serialNumber" ></th>
-			<th><input type="Number" name="parStock" value="0" ></th>
-			<th><input type="Number" name="stockOnHand" value="0" ></th>
-			<th><input type="date" name="shelfLife" ></th>
-			<th><input type="text" name="provider" ></th>
-			<th><input type="text" name="users" ></th>
-			<th class="deletePart"><a href="#/" type="submit" onclick="document.forms['newPart'].submit()"><i class="fas fa-check"></i></a></th>	
+			<th><input type="text" name="extention" required/></th>
+			<th><input type="text" name="designation" required/></th>
+			<th><input type="text" name="partNumber" required/></th>
+			<th><input type="text" name="serialNumber" required/></th>
+			<th><input type="Number" name="parStock" value="0" required/></th>
+			<th><input type="Number" name="stockOnHand" value="0" required/></th>
+			<th><input type="date" name="shelfLife" required/></th>
+			<th><input type="text" name="provider" required/></th>
+			<th><input type="text" name="users" required/></th>
+			<th class="deletePart"><button type="submit"><i class="fas fa-check"></i></button></th>	
 		</tr>
 	</table>
 </form>
@@ -248,18 +248,18 @@
 	if ($_GET['dot'] == 'All') : ?>action="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-All-update-<?= $_GET['id'] ?>"<?php 
 	else : ?> action="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-update-<?= $_GET['id'] ?>-filter-<?= $_GET['dot'] ?>" <?php endif; ?>>
 
-		<input id="newSerialN" type="text" name="serialNumber" placeholder="Your new Serial Number" required>
-		<input id="newShelfLife" type="date" name="shelfLife" placeholder="New shelf Life YYYY-MM-DD" required>
+		<input id="newSerialN" type="text" name="serialNumber" placeholder="Your new Serial Number" required/>
+		<input id="newShelfLife" type="date" name="shelfLife" placeholder="New shelf Life YYYY-MM-DD" required/>
 
 		<div>
-			<input type="submit" name="submitNewSN" value="Valider" id="buttonNewSerial">
+			<input type="submit" name="submitNewSN" value="Valider" id="buttonNewSerial"/>
 
 			<?php if ($_GET['dot'] == 'All'):?>
 			<a href="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-All">
 			<?php else : ?>
 			<a href="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-filter-<?= $_GET['dot'] ?>">
 			<?php endif; ?>
-			<input type="button" value="Annuler" id="buttonNewSerial"> 
+			<input type="button" value="Annuler" id="buttonNewSerial"/> 
 			</a>
 		</div>
 		
