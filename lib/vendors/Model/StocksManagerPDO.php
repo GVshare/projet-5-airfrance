@@ -6,23 +6,24 @@ use \Entity\Stocks;
 class StocksManagerPDO extends StocksManager
 {
 
-  // GET FULL STOCK OF AIRFRANCE =============================================================================================================
-
+  // GET FULL STOCK OF COMPANY =============================================================================================================
 
   public function getListFiltered($company , $dot)
   {
     if ($dot == "All") :
       $sql = '
-      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
-      FROM stocks
-      WHERE company = ?
-      ORDER BY itemPool ASC';
+        SELECT dot , kit , itemPool, designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
+        FROM stocks
+        WHERE company = ?
+        ORDER BY itemPool ASC'
+      ;
     else :
       $sql = '
-      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
-      FROM stocks
-      WHERE company = ? AND dot = ?
-      ORDER BY itemPool ASC';
+        SELECT dot , kit , itemPool , designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
+        FROM stocks
+        WHERE company = ? AND dot = ?
+        ORDER BY itemPool ASC'
+      ;
     endif;
 
     $requete = $this->dao->prepare($sql);
@@ -44,7 +45,7 @@ class StocksManagerPDO extends StocksManager
 
   public function infoDot($company , $dot) {
     $sql = '
-      SELECT dot , kit , itemPool, designation, partNumber, serialNumber, parStock, stockOnHand, shelfLife, provider, users , id , company 
+      SELECT dot , kit , itemPool , designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
       FROM stocks
       WHERE company = ? AND dot = ?
       ORDER BY itemPool ASC';
@@ -65,10 +66,10 @@ class StocksManagerPDO extends StocksManager
   public function decrease($id)
   {
     $sql = '
-    UPDATE stocks
-    SET stockOnHand = stockOnHand - 1
-    WHERE id = ?
-    ';
+      UPDATE stocks
+      SET stockOnHand = stockOnHand - 1
+      WHERE id = ?'
+    ;
 
     $requete = $this->dao->prepare($sql);
     

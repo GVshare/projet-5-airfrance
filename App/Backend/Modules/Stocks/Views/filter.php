@@ -253,9 +253,13 @@
 
 		<div>
 			<input type="submit" name="submitNewSN" value="Valider" id="buttonNewSerial">
-			<a <?php 
-				if ($_GET['dot'] == 'All') : ?> href="/projet-5-airfrance/Web/stocks-airFrance-All"<?php 
-				else : ?> href="/projet-5-airfrance/Web/stocks-airFrance-filter-<?= $_GET['dot'] ?>"><input type="button" value="Annuler" id="buttonNewSerial"> <?php endif; ?>
+
+			<?php if ($_GET['dot'] == 'All'):?>
+			<a href="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-All">
+			<?php else : ?>
+			<a href="/projet-5-airfrance/Web/stocks-<?=$_GET['company']?>-filter-<?= $_GET['dot'] ?>">
+			<?php endif; ?>
+			<input type="button" value="Annuler" id="buttonNewSerial"> 
 			</a>
 		</div>
 		
