@@ -19,21 +19,21 @@
 	<div id="communication">
 		<div id="titleComment">
 			<?php foreach ($post as $post) : ?>
-				<h2><?= 'Title : ' . $post['title'] ?></h2>
+				<h2><?= 'Title : ' . $post['title'] ?><a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>-closeTopic"><button class="closeTopic">Close Topic</button></a></h2>
 				<p><?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?></p>
 			<?php endforeach; ?>
 		</div>
 
 		<div id="chat">
 			<?php foreach ($Comments as $Comment) : ?>
-				<p><?=  $Comment['dateComment'] . ' by ' .$Comment['author']  ?><br>
-				<?=  $Comment['content']  ?></p>
+				<p><em class="commentHeader"><?=  $Comment['dateComment'] . ' by ' .$Comment['author']  ?></em><br>
+				<?=  $Comment['content']  ?><br> <?= $Comment['attachment'] ?> </p>
 			<?php endforeach; ?>
 		</div>
 		<form id="chatForm" action="/projet-5-airfrance/Web/communication-onGoing-<?= $_GET['id'] ?>-newComment" method="POST">
 			<input type="text" name="authorComment" placeholder="Enter your name" required>
 			<input type="text" name="contentComment" placeholder="Enter your comment" required><br><br>
-			<input type="file" name="fileComment"><br><br>
+			<input type="file" name="fileAttachment"><br><br>
 			<input type="submit" name="submitComment" value="Send comment">
 		</form>
 

@@ -305,17 +305,23 @@ form {
 #titleComment {
 	border-bottom: 2px darkblue solid;
 }
+
 #chat {
 	height: 50vh;
+	background-color: lightgrey;
 	overflow-y: scroll;
+	padding-left: 10px;
+}
+
+.commentHeader {
+	font-weight: bold;
+	color: red;
+	text-transform: capitalize;
 }
 
 #chatForm {
 	margin-top: 10px;
-
 }
-
-
 
 aside {
 	height: 85vh;

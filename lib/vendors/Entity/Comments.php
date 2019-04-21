@@ -9,17 +9,20 @@ class Comments extends Entity
             $idPost,
             $author,
             $content,
+            $attachment,
             $dateComment;
 
   const AUTHOR_INVALID = 1;
   const CONTENT_INVALID = 2;
-  const DATECOMMENT_INVALID = 3;
+  const ATTACHMENT_INVALID = 3;
+  const DATECOMMENT_INVALID = 4;
 
   public function isValid()
   {
     return !(
       empty($this->author) || 
       empty($this->content) ||
+      empty($this->attachment) ||
       empty($this->dateComment)
     );
   }
@@ -45,6 +48,11 @@ class Comments extends Entity
     }
 
     $this->content = $content;
+  }
+
+  public function setAttachment($attachment)
+  {
+    $this->attachment = $attachment;
   }
 
   public function setDateOpen($dateComment)
@@ -73,6 +81,11 @@ class Comments extends Entity
   {
     return $this->content;
   }
+
+  public function attachment()
+  {
+    return $this->attachment;
+  } 
 
   public function dateComment()
   {

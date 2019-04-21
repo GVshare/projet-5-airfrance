@@ -52,8 +52,17 @@ class CommsController extends BackController
   {
     $manager = $this->managers->getManagerOf('Comments');
 
-    $manager->newComment($_GET["id"], $_POST["authorComment"], $_POST["contentComment"]);
+    $manager->newComment($_GET["id"], htmlspecialchars($_POST["authorComment"]), htmlspecialchars($_POST["contentComment"]), $_POST["fileAttachment"]);
     
     header('location: /projet-5-airfrance/Web/communication-onGoing-' . $_GET["id"]);
+  }
+
+  public function executeCloseTopic(HTTPRequest $request)
+  {
+    $manager = $this->managers->getManagerOf('Comms');
+
+    $manager->closeTopic($_GET["id"]);
+    
+    header('location: /projet-5-airfrance/Web/communication');
   }
 }

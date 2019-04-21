@@ -34,7 +34,8 @@
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)-update-([0-9]+)" module="Stocks" action="update" vars="company,dot,id"></route>
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-update-([0-9]+)-filter-([A-Z]+)" module="Stocks" action="update" vars="company,id,dot"></route>
 
-
+  <!-- ROUTE TO CLOSE A TOPIC -->
+  <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)-closeTopic" module="Comms" action="closeTopic" vars="id"></route>
 
 <!-- ============================================================================================================================================== -->
 <!-- =========================================================== COMMUNICATION PAGE =============================================================== -->

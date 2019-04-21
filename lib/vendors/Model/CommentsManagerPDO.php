@@ -7,7 +7,7 @@ class CommentsManagerPDO extends CommentsManager
 {
 	public function getComments($idPost) {
 		$sql = '
-			SELECT id, idPost, author, content, dateComment
+			SELECT id, idPost, author, content, attachment, dateComment
 			FROM comments
 			WHERE idPost = ?
 			ORDER BY dateComment DESC';
@@ -25,14 +25,14 @@ class CommentsManagerPDO extends CommentsManager
 		return $comments;
 	}
 
-	public function newComment($idPost, $authorComment, $contentComment) {
+	public function newComment($idPost, $authorComment, $contentComment, $fileAttachment) {
 		$sql = '
-			INSERT INTO comments (idPost, author, content, dateComment)
-			VALUES (?, ?, ?, NOW())';
+			INSERT INTO comments (idPost, author, content, attachment, dateComment)
+			VALUES (?, ?, ?, ?, NOW())';
 
 		$requete = $this->dao->prepare($sql);
 
-		$requete->execute(array($idPost, $authorComment, $contentComment));
+		$requete->execute(array($idPost, $authorComment, $contentComment, $fileAttachment));
 
 		$requete->closeCursor();
 	}

@@ -69,4 +69,15 @@ class CommsManagerPDO extends CommsManager
 	       
 	    return $post;
 	}
+
+	public function closeTopic($id) {
+		$sql = '
+	        UPDATE `posts` 
+	        SET status = 0 
+	        WHERE id = ?';
+
+	    $requete = $this->dao->prepare($sql);
+
+	    $requete->execute(array($id));
+	}
 }
