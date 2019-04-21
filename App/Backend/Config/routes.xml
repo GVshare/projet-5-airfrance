@@ -3,6 +3,10 @@
   <!-- ROUTE TO GO TO INDEX PAGE -->
   <route url="/projet-5-airfrance/Web/" module="Stocks" action="index" ></route>
 
+  <!-- ================================================================================================================================ -->
+  <!-- =================================================== STOCKS PAGE ================================================================ -->
+  <!-- ================================================================================================================================ -->
+
   <!-- ROUTE TO GO TO STOCKS PAGE -->
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-(All)" module="Stocks" action="filter" vars="company,dot" ></route>
   <route url="/projet-5-airfrance/Web/stocks-([A-Za-z]+)-filter-([A-Z]+)" module="Stocks" action="filter" vars="company,dot"></route>
@@ -40,6 +44,13 @@
   <!-- ROUTE TO GO TO INDEX PAGE -->
   <route url="/projet-5-airfrance/Web/communication" module="Comms" action="index" ></route>
 
+  <!-- ROUTE TO CREATE A NEW POST -->
   <route url="/projet-5-airfrance/Web/communication-newPost" module="Comms" action="newPost" ></route>
+
+  <!-- ROUTE TO GO TO A ONGOING POST SPECIFIED BY ITS ID -->
+  <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)" module="Comms" action="onGoing" vars='id' ></route>
+
+  <!-- ROUTE TO GO TO POST A COMMENT -->
+  <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)-newComment" module="Comms" action="newComment" vars='id' ></route>
 
 </routes>

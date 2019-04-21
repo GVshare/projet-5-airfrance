@@ -50,4 +50,23 @@ class CommsManagerPDO extends CommsManager
 	    
 	    $requete->execute(array($author , $title));
 	}
+
+	public function viewPost($id) {
+		$sql = '
+	        SELECT id , author , title , dateOpen , status
+	        FROM posts
+	        WHERE id = ?';
+
+	    $requete = $this->dao->prepare($sql);
+
+	    $requete->execute(array($id));
+
+	    $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Posts');
+    
+	    $post = $requete->fetchAll();
+	    
+	    $requete->closeCursor();
+	       
+	    return $post;
+	}
 }

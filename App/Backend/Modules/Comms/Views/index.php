@@ -7,7 +7,7 @@
 		<h3>On going communications</h3>
 
 		<?php foreach ($postsOpen as $postOpen) : ?>
-			<a href="#/"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
+			<a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
 		<?php endforeach ?>
 
 		<h3>Archives</h3>

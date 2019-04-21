@@ -299,7 +299,23 @@ form {
 #communication {
 	width: 70%;
 	height: 100vh;
+	padding-left: 20px;
 }
+
+#titleComment {
+	border-bottom: 2px darkblue solid;
+}
+#chat {
+	height: 50vh;
+	overflow-y: scroll;
+}
+
+#chatForm {
+	margin-top: 10px;
+
+}
+
+
 
 aside {
 	height: 85vh;
