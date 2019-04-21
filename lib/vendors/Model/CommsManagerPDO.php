@@ -80,4 +80,15 @@ class CommsManagerPDO extends CommsManager
 
 	    $requete->execute(array($id));
 	}
+
+	public function openTopic($id) {
+		$sql = '
+	        UPDATE `posts` 
+	        SET status = 1 
+	        WHERE id = ?';
+
+	    $requete = $this->dao->prepare($sql);
+
+	    $requete->execute(array($id));
+	}
 }

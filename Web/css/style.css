@@ -287,6 +287,10 @@ form {
 	color: red;
 }
 
+.closeTopic {
+	font-size: 0.8em;
+}
+
 /*======================================================================================================================================*/
 #comSection {
 	display: flex;
@@ -308,6 +312,13 @@ form {
 
 #chat {
 	height: 50vh;
+	background-color: lightgrey;
+	overflow-y: scroll;
+	padding-left: 10px;
+}
+
+#chatClosed {
+	height: 65vh;
 	background-color: lightgrey;
 	overflow-y: scroll;
 	padding-left: 10px;

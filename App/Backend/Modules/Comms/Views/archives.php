@@ -1,5 +1,5 @@
 <header>
-	<a href="/projet-5-airfrance/Web/" class="logoBackBlue"><i class="far fa-hand-point-left"></i></a><h1 class="titleComm">On going communications</h1>
+	<a href="/projet-5-airfrance/Web/" class="logoBackBlue"><i class="far fa-hand-point-left"></i></a><h1 class="titleComm">Archives</h1>
 </header>
 
 <section id="comSection">
@@ -19,23 +19,17 @@
 	<div id="communication">
 		<div id="titleComment">
 			<?php foreach ($post as $post) : ?>
-				<h2><?= 'Title : ' . $post['title'] ?><a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>-closeTopic"><button class="closeTopic">Close Topic</button></a></h2>
+				<h2><?= 'Title : ' . $post['title'] ?><a href="/projet-5-airfrance/Web/communication-postsClosed-<?=$post['id'] ?>-openTopic"><button class="closeTopic">Re-open Topic</button></a></h2>
 				<p><?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?></p>
 			<?php endforeach; ?>
 		</div>
 
-		<div id="chat">
+		<div id="chatClosed">
 			<?php foreach ($Comments as $Comment) : ?>
 				<p><em class="commentHeader"><?=  $Comment['dateComment'] . ' by ' .$Comment['author']  ?></em><br>
 				<?=  $Comment['content']  ?><br> <?= $Comment['attachment'] ?> </p>
 			<?php endforeach; ?>
 		</div>
-		<form id="chatForm" action="/projet-5-airfrance/Web/communication-onGoing-<?= $_GET['id'] ?>-newComment" method="POST">
-			<input type="text" name="authorComment" placeholder="Enter your name" required>
-			<input type="text" name="contentComment" placeholder="Enter your comment" required><br><br>
-			<input type="file" name="fileAttachment"><br><br>
-			<input type="submit" name="submitComment" value="Send comment">
-		</form>
 
 	</div>
 </section>

@@ -37,6 +37,10 @@
   <!-- ROUTE TO CLOSE A TOPIC -->
   <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)-closeTopic" module="Comms" action="closeTopic" vars="id"></route>
 
+  <!-- ROUTE TO RE-OPEN A TOPIC -->
+  <route url="/projet-5-airfrance/Web/communication-postsClosed-([0-9]+)-openTopic" module="Comms" action="openTopic" vars="id"></route>
+
+
 <!-- ============================================================================================================================================== -->
 <!-- =========================================================== COMMUNICATION PAGE =============================================================== -->
 <!-- ============================================================================================================================================== -->
@@ -50,6 +54,9 @@
 
   <!-- ROUTE TO GO TO A ONGOING POST SPECIFIED BY ITS ID -->
   <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)" module="Comms" action="onGoing" vars='id' ></route>
+
+  <!-- ROUTE TO GO TO A ARCHIVE POST SPECIFIED BY ITS ID -->
+  <route url="/projet-5-airfrance/Web/communication-archives-([0-9]+)" module="Comms" action="archives" vars='id' ></route>
 
   <!-- ROUTE TO GO TO POST A COMMENT -->
   <route url="/projet-5-airfrance/Web/communication-onGoing-([0-9]+)-newComment" module="Comms" action="newComment" vars='id' ></route>
