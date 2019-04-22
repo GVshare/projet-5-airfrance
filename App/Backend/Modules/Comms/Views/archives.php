@@ -12,15 +12,29 @@
 
 		<h3>Archives</h3>
 		<?php foreach ($postsClose as $postClose) : ?>
-			<a href="/projet-5-airfrance/Web/communication-archives-<?=$postClose['id'] ?>"><p class="postsClosed"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " on " . $postClose["dateOpen"] ?></p></a>
+			<a href="/projet-5-airfrance/Web/communication-archives-<?=$postClose['id'] ?>">
+				<?php if ($_GET['id'] == $postClose["id"]) : ?>
+					<p class="postsClosedSelected"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " on " . $postClose["dateOpen"] ?></p>
+				<?php else : ?>
+					<p class="postsClosed"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " on " . $postClose["dateOpen"] ?></p>
+				<?php endif ?>
+			</a>
 		<?php endforeach ?>
 	</aside>
 
 	<div id="communication">
 		<div id="titleComment">
 			<?php foreach ($post as $post) : ?>
-				<h2><?= 'Title : ' . $post['title'] ?><a href="/projet-5-airfrance/Web/communication-postsClosed-<?=$post['id'] ?>-openTopic"><button class="closeTopic">Re-open Topic</button></a></h2>
-				<p><?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?></p>
+				<h2><?= 'Title : ' . $post['title'] ?></h2>
+				<p>
+					<?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?>
+					<a href="/projet-5-airfrance/Web/communication-<?=$post['id'] ?>-deleteTopic">
+						<button class="deleteTopic">Delete Topic</button>
+					</a>
+					<a href="/projet-5-airfrance/Web/communication-postsClosed-<?=$post['id'] ?>-openTopic">
+						<button class="closeTopic">Re-open Topic</button>
+					</a>
+				</p>
 			<?php endforeach; ?>
 		</div>
 

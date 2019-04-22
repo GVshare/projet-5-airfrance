@@ -7,7 +7,14 @@
 		<h3>On going communications</h3>
 
 		<?php foreach ($postsOpen as $postOpen) : ?>
-			<a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
+			<a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>">
+				<?php if ($_GET['id'] == $postOpen["id"]) : ?>
+					<p class="postsOnGoindSelected"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p>
+				<?php else : ?>
+					<p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p>
+				<?php endif; ?>
+
+			</a>
 		<?php endforeach ?>
 
 		<h3>Archives</h3>
@@ -19,8 +26,16 @@
 	<div id="communication">
 		<div id="titleComment">
 			<?php foreach ($post as $post) : ?>
-				<h2><?= 'Title : ' . $post['title'] ?><a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>-closeTopic"><button class="closeTopic">Close Topic</button></a></h2>
-				<p><?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?></p>
+				<h2><?= 'Title : ' . $post['title'] ?></h2>
+				<p>
+					<?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?>
+					<a href="/projet-5-airfrance/Web/communication-<?=$post['id'] ?>-deleteTopic">
+						<button class="deleteTopic">delete Topic</button>
+					</a>
+					<a href="/projet-5-airfrance/Web/communication-onGoing-<?=$post['id'] ?>-closeTopic">
+						<button class="closeTopic">Close Topic</button>
+					</a>
+				</p>
 			<?php endforeach; ?>
 		</div>
 

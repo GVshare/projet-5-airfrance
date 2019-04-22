@@ -40,6 +40,9 @@
   <!-- ROUTE TO RE-OPEN A TOPIC -->
   <route url="/projet-5-airfrance/Web/communication-postsClosed-([0-9]+)-openTopic" module="Comms" action="openTopic" vars="id"></route>
 
+  <!-- ROUTE TO DELETE A TOPIC -->
+  <route url="/projet-5-airfrance/Web/communication-([0-9]+)-deleteTopic" module="Comms" action="deleteTopic" vars="id"></route>
+
 
 <!-- ============================================================================================================================================== -->
 <!-- =========================================================== COMMUNICATION PAGE =============================================================== -->

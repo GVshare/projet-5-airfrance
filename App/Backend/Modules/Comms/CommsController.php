@@ -94,4 +94,13 @@ class CommsController extends BackController
     
     header('location: /projet-5-airfrance/Web/communication-onGoing-' . $_GET["id"]);
   }
+
+  public function executeDeleteTopic(HTTPRequest $request)
+  {
+    $manager = $this->managers->getManagerOf('Comms');
+
+    $manager->deleteTopic($_GET["id"]);
+    
+    header('location: /projet-5-airfrance/Web/communication');
+  }
 }

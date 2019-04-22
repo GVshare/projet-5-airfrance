@@ -91,4 +91,14 @@ class CommsManagerPDO extends CommsManager
 
 	    $requete->execute(array($id));
 	}
+
+	public function deleteTopic($id) {
+		$sql = '
+	        DELETE FROM posts
+	        WHERE id = ?';
+
+	    $requete = $this->dao->prepare($sql);
+
+	    $requete->execute(array($id));
+	}
 }

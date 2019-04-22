@@ -195,7 +195,7 @@
 <!-- ADD ITEM TO STOCK TABLE -->
 </table>
 
-<form action="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-add" method="post" name="newPart">
+<form action="/projet-5-airfrance/Web/stocks-<?= $_GET['company'] ?>-add" method="post" name="newPart" id="form">
 	<table id="tableCommand">
 		<tr>
 			<th>Item Pool</th>
@@ -212,7 +212,7 @@
 		</tr>
 		<h3>Create New Stock Part</h3>
 		<tr>
-			<th><input type="text" name="itemPool" required></th>
+			<th><input type="text" name="itemPool" required id="itemPoolInput"></th>
 			<th>
 				<select name="kit">
 					<option value="">Select</option>
@@ -225,18 +225,19 @@
 					<option value="ING">INGREDIENTS</option>
 				</select>
 			</th>
-			<th><input type="text" name="extention" required/></th>
-			<th><input type="text" name="designation" required/></th>
-			<th><input type="text" name="partNumber" required/></th>
-			<th><input type="text" name="serialNumber" required/></th>
+			<th><input type="text" name="extention" required id="extentionInput" /></th>
+			<th><input type="text" name="designation" required id="designationInput"/></th>
+			<th><input type="text" name="partNumber" required id="partNumberInput"/></th>
+			<th><input type="text" name="serialNumber" required id="serialNumberInput"/></th>
 			<th><input type="Number" name="parStock" value="0" required/></th>
 			<th><input type="Number" name="stockOnHand" value="0" required/></th>
 			<th><input type="date" name="shelfLife" required/></th>
-			<th><input type="text" name="provider" required/></th>
-			<th><input type="text" name="users" required/></th>
+			<th><input type="text" name="provider" required id="providerInput"/></th>
+			<th><input type="text" name="users" required id="userInput"/></th>
 			<th class="deletePart"><button type="submit"><i class="fas fa-check"></i></button></th>	
 		</tr>
 	</table>
+	<span id="errorInput">No special character allowed in inputs !</span>
 </form>
 
 <!-- UPDATE BOX -->
@@ -267,3 +268,8 @@
 </div>
 
 <?php endif; ?>
+
+
+
+
+<script type="text/javascript" src="../Web/js/formVerification.js"></script>
