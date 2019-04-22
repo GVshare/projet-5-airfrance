@@ -4,7 +4,7 @@
 <form action="/projet-5-airfrance/Web/" method="post" id="form">
   <label>Pseudo</label>
   <input type="text" name="login" id="login"/>
-  <span id="errorLogin">Your Login must be alphanumeric !</span>
+  <span id="errorLogin">Your login must contain only letters and/or numbers !</span>
   <br/>
  
   <label>Mot de passe</label>
