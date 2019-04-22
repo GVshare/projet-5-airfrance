@@ -1,10 +1,6 @@
 
 <h2>Connexion</h2>
 
- <?php if ($user->isAuthenticated()) {
-	echo "YES";
-} ?>
-
 <form action="/projet-5-airfrance/Web/" method="post" id="form">
   <label>Pseudo</label>
   <input type="text" name="login" id="login"/>
