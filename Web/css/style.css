@@ -6,6 +6,20 @@ body {
 	overflow: hidden;
 }
 
+#logOut {
+	color: white;
+	margin-right: 7.5%;
+	margin-top: auto;
+	margin-bottom: auto;
+	justify-content: center;
+	text-decoration: underline;
+	font-size: 1.2em;
+}
+
+#logOut:hover {
+	color: orange;
+}
+
 #errorLogin {
 	display: none;
 	color: red;
@@ -26,7 +40,6 @@ h1 {
 	text-align: center;
 	color: white;
 	width: 100%;
-	margin-right: 7.5%;
 }
 
 #communicationLogo {
@@ -150,7 +163,6 @@ button:hover {
 	font-size: 2.1em;
 	margin-top: 1.5vh;
 	margin-bottom: 1.5vh;
-	padding-right: 4%;
 	text-transform: capitalize;
 }
 
@@ -159,7 +171,7 @@ button:hover {
 	font-size: 2em;
 	margin-top: 1.5vh;
 	margin-bottom: 1.5vh;
-	padding-left: 2%;
+	margin-left: 7.5%;
 }
 
 .logoBackBlue {
@@ -167,7 +179,7 @@ button:hover {
 	font-size: 2.5em;
 	margin-top: auto;
 	margin-bottom: auto;
-	padding-left: 2%;
+	margin-left: 7.5%;
 }
 
 .logoBack:hover , .logoBackBlue:hover {
@@ -331,9 +343,7 @@ form {
 	display: flex;
 }
 
-.titleComm {
-	margin-right: 0;
-}
+
 
 #communication {
 	width: 70%;

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
-	<route url="/projet-5-airfrance/Web/connexion" module="Connexion" action="index" ></route>
-  
+	<route url="/projet-5-airfrance/Web/" module="Connexion" action="index" ></route>
 </routes>

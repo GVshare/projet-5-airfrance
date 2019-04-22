@@ -16,9 +16,9 @@ class ConnexionController extends BackController
       $password = $request->postData('password');
  
       if ($login == $this->app->config()->get('login') && $password == $this->app->config()->get('pass'))
-      {var_dump('test');
+      {
         $this->app->user()->setAuthenticated(true);
-        $this->app->httpResponse()->redirect('google.com');
+        $this->app->httpResponse()->redirect('/projet-5-airfrance/Web/admin/');
       }
       else
       {

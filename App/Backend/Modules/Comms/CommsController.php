@@ -3,6 +3,7 @@ namespace App\Backend\Modules\Comms;
  
 use \OCFram\BackController;
 use \OCFram\HTTPRequest;
+use \OCFram\User;
 use \Entity\Posts;
 use \Entity\Comments;
 
@@ -17,6 +18,7 @@ class CommsController extends BackController
     
     $this->page->addVar('postsOpen', $postsOpen);
     $this->page->addVar('postsClose', $postsClose);
+
   }
 
   public function executeNewPost(HTTPRequest $request)
@@ -25,7 +27,7 @@ class CommsController extends BackController
 
     $posts = $manager->newPost(htmlspecialchars($_POST["authorTopic"]) , htmlspecialchars($_POST["titleTopic"]));
     
-    header('location: /projet-5-airfrance/Web/communication');
+    header('location: /projet-5-airfrance/Web/admin/communication');
   }
 
   public function executeOnGoing(HTTPRequest $request)
@@ -74,7 +76,7 @@ class CommsController extends BackController
 
     $manager->newComment($_GET["id"], htmlspecialchars($_POST["authorComment"]), htmlspecialchars($_POST["contentComment"]), $_POST["fileAttachment"]);
     
-    header('location: /projet-5-airfrance/Web/communication-onGoing-' . $_GET["id"]);
+    header('location: /projet-5-airfrance/Web/admin/communication-onGoing-' . $_GET["id"]);
   }
 
   public function executeCloseTopic(HTTPRequest $request)
@@ -83,7 +85,7 @@ class CommsController extends BackController
 
     $manager->closeTopic($_GET["id"]);
     
-    header('location: /projet-5-airfrance/Web/communication');
+    header('location: /projet-5-airfrance/Web/admin/communication');
   }
 
   public function executeOpenTopic(HTTPRequest $request)
@@ -92,7 +94,7 @@ class CommsController extends BackController
 
     $manager->openTopic($_GET["id"]);
     
-    header('location: /projet-5-airfrance/Web/communication-onGoing-' . $_GET["id"]);
+    header('location: /projet-5-airfrance/Web/admin/communication-onGoing-' . $_GET["id"]);
   }
 
   public function executeDeleteTopic(HTTPRequest $request)
@@ -101,6 +103,6 @@ class CommsController extends BackController
 
     $manager->deleteTopic($_GET["id"]);
     
-    header('location: /projet-5-airfrance/Web/communication');
+    header('location: /projet-5-airfrance/Web/admin/communication');
   }
 }

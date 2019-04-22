@@ -12,5 +12,4 @@ abstract class StocksManager extends Manager
   abstract public function delete($id);
   abstract public function add($itemPool , $kit , $extention , $designation , $partNumber , $serialNumber , $parStock , $stockOnHand , $shelfLife , $provider , $users , $company);
   abstract public function update($id , $serialNumber , $shelfLife);
-
 }

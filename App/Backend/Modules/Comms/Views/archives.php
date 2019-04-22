@@ -1,5 +1,6 @@
 <header>
-	<a href="/projet-5-airfrance/Web/" class="logoBackBlue"><i class="far fa-hand-point-left"></i></a><h1 class="titleComm">Archives</h1>
+	<a href="/projet-5-airfrance/Web/admin/" class="logoBackBlue"><i class="far fa-hand-point-left"></i></a><h1 class="titleComm">Archives</h1>
+	<a href="/projet-5-airfrance/Web/admin/logOut" id="logOut">Log&nbsp;Out</a>
 </header>
 
 <section id="comSection">
@@ -7,12 +8,12 @@
 		<h3>On going communications</h3>
 
 		<?php foreach ($postsOpen as $postOpen) : ?>
-			<a href="/projet-5-airfrance/Web/communication-onGoing-<?=$postOpen['id'] ?>"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
+			<a href="/projet-5-airfrance/Web/admin/communication-onGoing-<?=$postOpen['id'] ?>"><p class="postsOnGoing"><?= 'Title: '. $postOpen['title'] . "<br>". "By " . $postOpen["author"] . " on " . $postOpen["dateOpen"] ?></p></a>
 		<?php endforeach ?>
 
 		<h3>Archives</h3>
 		<?php foreach ($postsClose as $postClose) : ?>
-			<a href="/projet-5-airfrance/Web/communication-archives-<?=$postClose['id'] ?>">
+			<a href="/projet-5-airfrance/Web/admin/communication-archives-<?=$postClose['id'] ?>">
 				<?php if ($_GET['id'] == $postClose["id"]) : ?>
 					<p class="postsClosedSelected"><?= 'Title: '.$postClose['title']. "<br>". "By " . $postClose["author"] . " on " . $postClose["dateOpen"] ?></p>
 				<?php else : ?>
@@ -28,10 +29,10 @@
 				<h2><?= 'Title : ' . $post['title'] ?></h2>
 				<p>
 					<?= 'Topic opened by ' . $post['author'] . ' on ' . $post['dateOpen'] ?>
-					<a href="/projet-5-airfrance/Web/communication-<?=$post['id'] ?>-deleteTopic">
+					<a href="/projet-5-airfrance/Web/admin/communication-<?=$post['id'] ?>-deleteTopic">
 						<button class="deleteTopic">Delete Topic</button>
 					</a>
-					<a href="/projet-5-airfrance/Web/communication-postsClosed-<?=$post['id'] ?>-openTopic">
+					<a href="/projet-5-airfrance/Web/admin/communication-postsClosed-<?=$post['id'] ?>-openTopic">
 						<button class="closeTopic">Re-open Topic</button>
 					</a>
 				</p>

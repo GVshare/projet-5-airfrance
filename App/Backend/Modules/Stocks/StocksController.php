@@ -72,9 +72,9 @@ class StocksController extends BackController
     $manager->decrease($request->getData('id'));
 
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   }   
 
@@ -85,9 +85,9 @@ class StocksController extends BackController
     $manager->increase($request->getData('id'));
 
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   } 
 
@@ -98,9 +98,9 @@ class StocksController extends BackController
     $manager->delete($request->getData('id'));
 
      if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   } 
 
@@ -123,7 +123,7 @@ class StocksController extends BackController
       htmlspecialchars($request->getData("company"))
     );
 
-    header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_POST['kit']);
+    header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_POST['kit']);
   } 
 
   public function executeUpdate(HTTPRequest $request)
@@ -137,9 +137,9 @@ class StocksController extends BackController
     );
     
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
     else :
-      header('location: /projet-5-airfrance/Web/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
     endif;
   }
 
@@ -219,5 +219,11 @@ class StocksController extends BackController
     $this->page->addVar('numberMissingDot'.$dot , $numberMissingDot);
     $this->page->addVar('partAlmostExpiringDot'.$dot , $partAlmostExpiringDot);
     $this->page->addVar('partExpiredDot'.$dot, $partExpiredDot);
+  }
+
+  public function ExecuteLogOut()
+  {
+    unset($_SESSION['auth']);
+    header('location: /projet-5-airfrance/Web/');
   }
 }

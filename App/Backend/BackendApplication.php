@@ -14,7 +14,15 @@ class BackendApplication extends Application
  
   public function run()
   {
-    $controller = $this->getController();
+    if ($this->user->isAuthenticated())
+    {
+      $controller = $this->getController();
+    }
+    else
+    {
+      header('location: /projet-5-airfrance/Web/');
+    }
+    
     $controller->execute();
  
     $this->httpResponse->setPage($controller->page());
