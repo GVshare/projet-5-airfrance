@@ -21,8 +21,11 @@ body {
 }
 
 #errorLogin {
-	display: none;
 	color: red;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
+	display: none;
 }
 
 #error {
@@ -63,7 +66,11 @@ h1 {
 }
 
 .companyStockSummaryTop {
-	margin-top: 20px;
+	padding-top: 50px;
+	width: auto;
+	padding-bottom: 20px;
+	margin-bottom: 0%;
+	border-bottom: solid 1px lightgrey;
 }
 
 .companyStockSummary {
@@ -195,6 +202,11 @@ table {
 
 th {
 	border: black 1px solid;
+}
+
+.title {
+	background-color: lightblue;
+	color: black;
 }
 
 .fa-pencil-alt {
@@ -453,4 +465,44 @@ aside {
 	padding-bottom: 1%;
 	background-color: green;
 	color: white;
+}
+
+#connexionPage {
+	background-image: url('../images/connexionBackground2.jpg');
+	background-size: cover;
+}
+
+#connexionTitle {
+	text-align: center;
+	margin-top: 5vh;
+	font-size: 2.5em;
+}
+
+#connexionInfo {
+	display: flex;
+	justify-content: space-around;
+	width: 70%;
+	margin-bottom: 5vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputConnexion {
+	font-size: 2em;	
+} 
+
+#buttonConnexion {
+	width: 20vw;
+	margin-left: 40vw;
+	margin-right: 40vw;
+	margin-top: 20px;
+	height: 40px;
+	border-radius: 20px;
+}
+
+#errorLogDetails {
+	color: red;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
 }

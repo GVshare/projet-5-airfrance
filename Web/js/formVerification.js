@@ -20,7 +20,6 @@ function check(e,input) {
 		e.preventDefault();
 		errorInput.style.display = 'block';
 		input.style.backgroundColor = 'red';
-		console.log('working so far');
 	};
 };
 

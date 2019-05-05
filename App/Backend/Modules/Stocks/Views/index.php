@@ -8,7 +8,7 @@
 	<a href="/projet-5-airfrance/Web/admin/logOut" id="logOut">Log&nbsp;Out</a>
 </header>
 
-<div class="companyStockSummary , companyStockSummaryTop">
+<div class="companyStockSummaryTop">
 	<button><a href="/projet-5-airfrance/Web/admin/stocks-airFrance-All">Air France</a></button>
 	<?php
 	if ($numberMissingAF === 0 && $partAlmostExpiringAF === 0 && $partExpiredAF === 0) :

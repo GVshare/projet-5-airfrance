@@ -42,7 +42,7 @@
 		<div id="chatClosed">
 			<?php foreach ($Comments as $Comment) : ?>
 				<p><em class="commentHeader"><?=  $Comment['dateComment'] . ' by ' .$Comment['author']  ?></em><br>
-				<?=  $Comment['content']  ?><br> <?= $Comment['attachment'] ?> </p>
+				<?=  $Comment['content']  ?><br> <a href="../<?= $Comment['attachment'] ?>"><?= $Comment['attachmentName']?></a> </p>
 			<?php endforeach; ?>
 		</div>
 

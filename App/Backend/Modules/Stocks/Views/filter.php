@@ -114,7 +114,7 @@
 
 <!-- STOCK INVENTORY TABLE TITLE -->
 <table>
-	<tr>	
+	<tr class="title">	
 		<th>Item Pool</th>
 		<th>Designation</th>
 		<th>Part Number</th>
@@ -198,7 +198,7 @@
 
 <form action="/projet-5-airfrance/Web/admin/stocks-<?= $_GET['company'] ?>-add" method="post" name="newPart" id="form">
 	<table id="tableCommand">
-		<tr>
+		<tr class="title">
 			<th>Item Pool</th>
 			<th>Kit</th>
 			<th>Kit Extention</th>

@@ -10,12 +10,14 @@ class Comments extends Entity
             $author,
             $content,
             $attachment,
+            $attachmentName,
             $dateComment;
 
   const AUTHOR_INVALID = 1;
   const CONTENT_INVALID = 2;
   const ATTACHMENT_INVALID = 3;
-  const DATECOMMENT_INVALID = 4;
+  const ATTACHMENTNAME_INVALID = 4;
+  const DATECOMMENT_INVALID = 5;
 
   public function isValid()
   {
@@ -23,6 +25,7 @@ class Comments extends Entity
       empty($this->author) || 
       empty($this->content) ||
       empty($this->attachment) ||
+      empty($this->attachmentName) ||
       empty($this->dateComment)
     );
   }
@@ -55,6 +58,11 @@ class Comments extends Entity
     $this->attachment = $attachment;
   }
 
+  public function setAttachmentName($attachmentName)
+  {
+    $this->attachmentName = $attachmentName;
+  }
+
   public function setDateOpen($dateComment)
   {
     $this->dateComment = $dateComment;
@@ -85,6 +93,11 @@ class Comments extends Entity
   public function attachment()
   {
     return $this->attachment;
+  } 
+
+  public function attachmentName()
+  {
+    return $this->attachmentName;
   } 
 
   public function dateComment()

@@ -44,10 +44,10 @@
 		<div id="chat">
 			<?php foreach ($Comments as $Comment) : ?>
 				<p><em class="commentHeader"><?=  $Comment['dateComment'] . ' by ' .$Comment['author']  ?></em><br>
-				<?=  $Comment['content']  ?><br> <?= $Comment['attachment'] ?> </p>
+				<?=  $Comment['content']  ?><br> <a href="../<?= $Comment['attachment'] ?>"><?= $Comment['attachmentName']?></a> </p>
 			<?php endforeach; ?>
 		</div>
-		<form id="chatForm" action="/projet-5-airfrance/Web/admin/communication-onGoing-<?= $_GET['id'] ?>-newComment" method="POST">
+		<form id="chatForm" action="/projet-5-airfrance/Web/admin/communication-onGoing-<?= $_GET['id'] ?>-newComment" method="POST" enctype="multipart/form-data">
 			<input type="text" name="authorComment" placeholder="Enter your name" required>
 			<input type="text" name="contentComment" placeholder="Enter your comment" required><br><br>
 			<input type="file" name="fileAttachment"><br><br>
