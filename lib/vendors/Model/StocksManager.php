@@ -5,7 +5,7 @@ use \OCFram\Manager;
 
 abstract class StocksManager extends Manager
 {
-  abstract public function getListFiltered($company , $dot);
+  abstract public function getListFiltered($company , $dot, $start, $itemsPerPage);
   abstract public function infoDot($company , $dot);
   abstract public function decrease($id);
   abstract public function increase($id);

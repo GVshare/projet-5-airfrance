@@ -8,21 +8,23 @@ class StocksManagerPDO extends StocksManager
 
   // GET FULL STOCK OF COMPANY =============================================================================================================
 
-  public function getListFiltered($company , $dot)
+  public function getListFiltered($company , $dot, $start, $itemsPerPage)
   {
     if ($dot == "All") :
-      $sql = '
+      $sql = ('
         SELECT dot , kit , itemPool, designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
         FROM stocks
         WHERE company = ?
-        ORDER BY itemPool ASC'
+        ORDER BY itemPool ASC
+        LIMIT ' . $start . ',' . $itemsPerPage)
       ;
     else :
-      $sql = '
+      $sql = ('
         SELECT dot , kit , itemPool , designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
         FROM stocks
         WHERE company = ? AND dot = ?
-        ORDER BY itemPool ASC'
+        ORDER BY itemPool ASC
+        LIMIT ' . $start . ',' . $itemsPerPage)
       ;
     endif;
 
@@ -41,6 +43,68 @@ class StocksManagerPDO extends StocksManager
     $requete->closeCursor();
        
     return $listStocks;
+  }
+
+  public function getListIndex($company , $dot)
+  {
+    if ($dot == "All") :
+      $sql = ('
+        SELECT dot , kit , itemPool, designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
+        FROM stocks
+        WHERE company = ?
+        ORDER BY itemPool ASC')
+      ;
+    else :
+      $sql = ('
+        SELECT dot , kit , itemPool , designation , partNumber , serialNumber , parStock , stockOnHand , shelfLife , provider , users , id , company 
+        FROM stocks
+        WHERE company = ? AND dot = ?
+        ORDER BY itemPool ASC')
+      ;
+    endif;
+
+    $requete = $this->dao->prepare($sql);
+
+    if ($dot == "All"):
+      $requete->execute(array($company));
+    else :
+      $requete->execute(array($company , $dot));
+    endif;
+
+    $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, '\Entity\Stocks');
+    
+    $listStocks = $requete->fetchAll();
+    
+    $requete->closeCursor();
+       
+    return $listStocks;
+  }
+
+  public function getList($company, $dot) {
+    if ($dot != 'All') {
+      $sql = '
+        SELECT id 
+        FROM stocks
+        WHERE company = ? AND dot = ?'
+    ;
+
+    $requete = $this->dao->prepare($sql);
+    $requete->execute(array($company, $dot));
+
+    return $requete;
+    } else {
+      $sql = '
+        SELECT id 
+        FROM stocks
+        WHERE company = ?'
+    ;
+
+    $requete = $this->dao->prepare($sql);
+    $requete->execute(array($company));
+
+    return $requete;
+    }
+    
   }
 
   public function infoDot($company , $dot) {

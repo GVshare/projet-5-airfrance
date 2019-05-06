@@ -195,6 +195,18 @@
 
 <!-- ADD ITEM TO STOCK TABLE -->
 </table>
+<br>
+<?php 
+if ($_GET['dot'] != 'All') {
+	for ($i=1; $i <= $totalPages; $i++) : 
+		echo "<a href='stocks-".$_GET['company']."-filter-A-page-$i' id='pagination'>$i</a>";
+	endfor;
+} else {
+	for ($i=1; $i <= $totalPages; $i++) : 
+		echo "<a href='stocks-".$_GET['company']."-All-page-$i' id='pagination'>$i</a>";
+	endfor;
+};
+?>
 
 <form action="/projet-5-airfrance/Web/admin/stocks-<?= $_GET['company'] ?>-add" method="post" name="newPart" id="form">
 	<table id="tableCommand">

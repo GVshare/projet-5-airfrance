@@ -11,10 +11,10 @@ class StocksController extends BackController
   {
     $manager = $this->managers->getManagerOf('Stocks');
 
-    $listStocksAF = $manager->getListFiltered("airFrance" , "All");
-    $listStocksCA = $manager->getListFiltered("airCanada" , "All");
-    $listStocksKLM = $manager->getListFiltered("KLM" , "All");
-    $listStocksUX = $manager->getListFiltered("airEuropa" , "All");
+    $listStocksAF = $manager->getListIndex("airFrance" , "All");
+    $listStocksCA = $manager->getListIndex("airCanada" , "All");
+    $listStocksKLM = $manager->getListIndex("KLM" , "All");
+    $listStocksUX = $manager->getListIndex("airEuropa" , "All");
 
     // We now add listStocks to the view
     $this->page->addVar('listStocksAF', $listStocksAF);
@@ -32,8 +32,26 @@ class StocksController extends BackController
   public function executeFilter(HTTPRequest $request)
   {
     $manager = $this->managers->getManagerOf('Stocks');
-      
-    $listStocks = $manager->getListFiltered($_GET['company'] , $_GET['dot']);
+
+    // Pagination
+    $itemsPerPage = 5;
+    $itemsTotalReq = $manager->getList($_GET['company'], $_GET['dot']);
+    $itemsTotal = $itemsTotalReq->rowCount();
+    $totalPages = ceil($itemsTotal / $itemsPerPage);
+
+    $this->page->addVar('totalPages', $totalPages);
+
+    if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
+      $_GET['page'] = intval($_GET['page']);
+      $currentPage = $_GET['page'];
+    } else {
+      $currentPage = 1;
+    }
+
+    $start = ($currentPage - 1) * $itemsPerPage;
+
+    // Access Stock page with dot filters
+    $listStocks = $manager->getListFiltered($_GET['company'], $_GET['dot'], $start, $itemsPerPage);
 
     $infoDotA = $manager->infoDot($_GET['company'] , "A");
     $infoDotG = $manager->infoDot($_GET['company'] , "G");
@@ -148,7 +166,7 @@ class StocksController extends BackController
     $manager = $this->managers->getManagerOf('Stocks');
 
     $company = '$listStocks'.$id;
-    $company = $manager->getListFiltered($companyName , "All");
+    $company = $manager->getListIndex($companyName , "All");
 
     $numberMissing = '$numberMissing'.$id;
     $partAlmostExpiring = '$partAlmostExpiring'.$id;
