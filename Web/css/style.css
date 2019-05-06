@@ -85,6 +85,14 @@ a {
 	text-decoration: none;
 }
 
+.pagination {
+	text-decoration: underline;
+}
+
+#pagination {
+	margin-left: 3%;
+}
+
 header {
 	display: flex;
 	justify-content: space-around;
