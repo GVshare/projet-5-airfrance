@@ -1,3 +1,18 @@
+/*=====================================================================================================================*/
+/*==================================================== INDEX ==========================================================*/
+/*=====================================================================================================================*/
+/*
+
+1/ CONNEXION PAGE
+2/ HOME PAGE
+3/ STOCKS PAGE
+4/ COMMUNICATION PAGE
+
+*/
+/*=====================================================================================================================*/
+/*=============================================== CONNEXION PAGE ======================================================*/
+/*=====================================================================================================================*/
+
 body {
 	width: 100%;
 	box-sizing: border-box;
@@ -6,18 +21,45 @@ body {
 	overflow: hidden;
 }
 
-#logOut {
-	color: white;
-	margin-right: 7.5%;
-	margin-top: auto;
-	margin-bottom: auto;
-	justify-content: center;
-	text-decoration: underline;
-	font-size: 1.2em;
+#connexionPage {
+	background-image: url('../images/connexionBackground2.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-#logOut:hover {
-	color: orange;
+#connexionTitle {
+	text-align: center;
+	margin-top: 5vh;
+	font-size: 2.5em;
+}
+
+#connexionInfo {
+	display: flex;
+	justify-content: space-around;
+	width: 70%;
+	margin-bottom: 5vh;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputConnexion {
+	font-size: 2em;	
+}
+
+#buttonConnexion {
+	width: 20vw;
+	margin-left: 40vw;
+	margin-right: 40vw;
+	margin-top: 20px;
+	height: 40px;
+	border-radius: 20px;
+}
+
+#errorLogDetails {
+	color: red;
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
 #errorLogin {
@@ -28,14 +70,33 @@ body {
 	display: none;
 }
 
-#error {
-	color: darkblue;
+.important {
+	color: red;
 }
 
-#errorInput {
-	margin-left: 2.5%;
-	color: red;
-	display: none;
+/*=====================================================================================================================*/
+/*================================================== HOME PAGE ========================================================*/
+/*=====================================================================================================================*/
+
+header {
+	display: flex;
+	justify-content: space-around;
+	background-color: darkblue;
+}
+
+button {
+	font-size: 1.5em;
+	margin-right: 50px;
+	margin-left: 5%;
+	border-radius: 10px;
+	background-color: cyan;
+	color: blue;
+	font-weight: bold;
+}
+
+button:hover {
+	background-color: white;
+	border-color: blue;
 }
 
 h1 {
@@ -81,42 +142,32 @@ h1 {
 	border-bottom: solid 1px lightgrey;
 }
 
+#logOut {
+	color: white;
+	margin-right: 7.5%;
+	margin-top: auto;
+	margin-bottom: auto;
+	justify-content: center;
+	text-decoration: underline;
+	font-size: 1.2em;
+}
+
+#logOut:hover {
+	color: orange;
+}
+
+#error {
+	color: darkblue;
+}
+
+#errorInput {
+	margin-left: 2.5%;
+	color: red;
+	display: none;
+}
+
 a {
 	text-decoration: none;
-}
-
-.pagination {
-	text-decoration: underline;
-}
-
-#pagination {
-	margin-left: 3%;
-}
-
-header {
-	display: flex;
-	justify-content: space-around;
-	background-color: darkblue;
-}
-
-button {
-	font-size: 1.5em;
-	margin-right: 50px;
-	margin-left: 5%;
-	border-radius: 10px;
-	background-color: cyan;
-	color: blue;
-	font-weight: bold;
-}
-
-button:hover {
-	background-color: white;
-	border-color: blue;
-}
-
-.selected {
-	background-color: white;
-	border-color: blue;
 }
 
 #statusGood {
@@ -145,6 +196,40 @@ button:hover {
 	color: red;
 	font-weight: bold;
 	margin-right: 50px;
+}
+
+.missStock, .expireItem {
+	background-color: red;
+}
+
+.almostExpireItem {
+	background-color: orange;
+}
+
+#imgPlane {
+	position: absolute;
+	width: 10px;
+	height: auto;
+	bottom: 15%;
+	font-size: 2em;
+	color: purple;
+}
+
+/*=====================================================================================================================*/
+/*================================================== STOCKS PAGE ======================================================*/
+/*=====================================================================================================================*/
+
+.pagination {
+	text-decoration: underline;
+}
+
+#pagination {
+	margin-left: 3%;
+}
+
+.selected {
+	background-color: white;
+	border-color: blue;
 }
 
 #navDot {
@@ -246,14 +331,6 @@ th {
 	text-shadow: red 1px 0 10px;
 }
 
-.missStock, .expireItem {
-	background-color: red;
-}
-
-.almostExpireItem {
-	background-color: orange;
-}
-
 h3 {
 	color: darkblue;
 	text-decoration: underline;
@@ -322,43 +399,10 @@ form {
 	border-radius: 5px;
 }
 
-#imgPlane {
-	position: absolute;
-	width: 10px;
-	height: auto;
-	bottom: 15%;
-	font-size: 2em;
-	color: purple;
-}
+/*=====================================================================================================================*/
+/*=============================================== COMMUNICATION PAGE ==================================================*/
+/*=====================================================================================================================*/
 
-.important {
-	color: red;
-}
-
-.closeTopic {
-	font-size: 0.8em;
-	background-color: lightgreen;
-	margin-left: 10px;
-	margin-right: 10px;
-	float: right;
-	font-size: 1.2em;
-}
-
-.deleteTopic {
-	font-size: 0.8em;
-	background-color: red;
-	color: white;
-	margin-left: 10px;
-	margin-right: 10px;
-	float: right;
-	font-size: 1.2em;
-}
-
-.deleteTopic:hover {
-	color: red;
-}
-
-/*======================================================================================================================================*/
 #comSection {
 	display: flex;
 }
@@ -475,42 +519,37 @@ aside {
 	color: white;
 }
 
-#connexionPage {
-	background-image: url('../images/connexionBackground2.jpg');
-	background-size: cover;
+.closeTopic {
+	font-size: 0.8em;
+	background-color: lightgreen;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: right;
+	font-size: 1.2em;
 }
 
-#connexionTitle {
-	text-align: center;
-	margin-top: 5vh;
-	font-size: 2.5em;
+.deleteTopic {
+	font-size: 0.8em;
+	background-color: red;
+	color: white;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: right;
+	font-size: 1.2em;
 }
 
-#connexionInfo {
-	display: flex;
-	justify-content: space-around;
-	width: 70%;
-	margin-bottom: 5vh;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.inputConnexion {
-	font-size: 2em;	
-} 
-
-#buttonConnexion {
-	width: 20vw;
-	margin-left: 40vw;
-	margin-right: 40vw;
-	margin-top: 20px;
-	height: 40px;
-	border-radius: 20px;
-}
-
-#errorLogDetails {
+.deleteTopic:hover {
 	color: red;
-	text-align: center;
-	font-size: 1.5em;
-	font-weight: bold;
 }
+
+/*=====================================================================================================================*/
+/*================================================= MEDIA QUERIES =====================================================*/
+/*=====================================================================================================================*/
+
+
+
+
+
+/*=====================================================================================================================*/
+/*==================================================== THE END ========================================================*/
+/*=====================================================================================================================*/
