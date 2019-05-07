@@ -9,7 +9,7 @@
 </header>
 
 <div class="companyStockSummaryTop">
-	<button><a href="/projet-5-airfrance/Web/admin/stocks-airFrance-All">Air France</a></button>
+	<button><a href="/projet-5-airfrance/Web/admin/stocks-airFrance-All-page-1">Air France</a></button>
 	<?php
 	if ($numberMissingAF === 0 && $partAlmostExpiringAF === 0 && $partExpiredAF === 0) :
 	?>
@@ -42,7 +42,7 @@
 </div>
 
 <div class="companyStockSummary">
-	<button><a href="/projet-5-airfrance/Web/admin/stocks-airCanada-All">Air Canada</a></button>
+	<button><a href="/projet-5-airfrance/Web/admin/stocks-airCanada-All-page-1">Air Canada</a></button>
 	<?php
 	if ($numberMissingCA === 0 && $partAlmostExpiringCA === 0 && $partExpiredCA === 0) :
 	?>
@@ -75,7 +75,7 @@
 </div>
 
 <div class="companyStockSummary">
-	<button><a href="/projet-5-airfrance/Web/admin/stocks-KLM-All">KLM Airline</a></button>
+	<button><a href="/projet-5-airfrance/Web/admin/stocks-KLM-All-page-1">KLM Airline</a></button>
 	<?php
 	if ($numberMissingKLM === 0 && $partAlmostExpiringKLM === 0 && $partExpiredKLM === 0) :
 	?>
@@ -108,7 +108,7 @@
 </div>
 
 <div class="companyStockSummary">
-	<button><a href="/projet-5-airfrance/Web/admin/stocks-airEuropa-All">Air Europa</a></button>
+	<button><a href="/projet-5-airfrance/Web/admin/stocks-airEuropa-All-page-1">Air Europa</a></button>
 	<?php
 	if ($numberMissingUX === 0 && $partAlmostExpiringUX === 0 && $partExpiredUX === 0) :
 	?>

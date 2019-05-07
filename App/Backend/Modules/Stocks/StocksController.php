@@ -90,9 +90,9 @@ class StocksController extends BackController
     $manager->decrease($request->getData('id'));
 
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All-page-'.$_GET['page']);
     else :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot'].'-page-'.$_GET['page']);
     endif;
   }   
 
@@ -103,9 +103,9 @@ class StocksController extends BackController
     $manager->increase($request->getData('id'));
 
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All-page-'.$_GET['page']);
     else :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot'].'-page-'.$_GET['page']);
     endif;
   } 
 
@@ -116,9 +116,9 @@ class StocksController extends BackController
     $manager->delete($request->getData('id'));
 
      if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All-page-'.$_GET['page']);
     else :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot'].'-page-'.$_GET['page']);
     endif;
   } 
 
@@ -126,6 +126,11 @@ class StocksController extends BackController
   {
     $manager = $this->managers->getManagerOf('Stocks');
     
+    $itemsPerPage = 5;
+    $itemsTotalReq = $manager->getList($_GET['company'], $_POST['kit']);
+    $itemsTotal = $itemsTotalReq->rowCount();
+    $totalPages = ceil($itemsTotal / $itemsPerPage);
+
     $manager->add(
       htmlspecialchars($request->postData("itemPool")) , 
       htmlspecialchars($request->postData("kit")) , 
@@ -141,7 +146,7 @@ class StocksController extends BackController
       htmlspecialchars($request->getData("company"))
     );
 
-    header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_POST['kit']);
+    header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_POST['kit'].'-page-'.$totalPages);
   } 
 
   public function executeUpdate(HTTPRequest $request)
@@ -155,9 +160,9 @@ class StocksController extends BackController
     );
     
     if ($_GET['dot']=='All') :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All');
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-All-page-'.$_GET['page']);
     else :
-      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot']);
+      header('location: /projet-5-airfrance/Web/admin/stocks-'.$_GET['company'].'-filter-'.$_GET['dot'].'-page-'.$_GET['page']);
     endif;
   }
 
