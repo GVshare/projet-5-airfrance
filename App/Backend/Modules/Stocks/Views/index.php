@@ -142,4 +142,38 @@
 
 <i class="fas fa-fighter-jet" id="imgPlane"></i>
 
+<footer>
+    <div id="weatherBox">
+      <div id="cityNameInfo">
+      	<div id="cityName">name</div>
+      	<div id="cityCoords">coords</div>
+      </div>
+      <div id="tempInfo">
+      	<div id="logoBox">
+      		<img id="logo"></img>
+      		<div id="degree"></div>
+      	</div>
+        
+        <div id="degreeInfo">
+          <div id="degreeRange">
+            <div id="degreeMin">degree Minimum</div>
+            <div id="degreeMax">degree Maximum</div>
+          </div>
+        </div>
+        <div id="otherInfo">
+          <div id="humidity">humidity</div>
+          <div id="visibility">visibility</div>
+          <div id="wind">wind</div>
+        </div>
+        <div id="sunInfo">
+          <div id="sunset">sunset</div>
+          <div id="sunrise">sunrise</div>
+        </div>
+        <div id="time">time</div>
+      </div>
+    </div>
+  </footer>
+
+<script type="text/javascript" src="../js/ajax.js"></script>
 <script type="text/javascript" src="../js/plane.js"></script>
+<script type="text/javascript" src="../js/weather.js"></script>

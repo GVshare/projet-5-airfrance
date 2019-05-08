@@ -16,7 +16,5 @@
    <?= $content ?>
   </section>
 
-  <footer></footer>
-
 </body>
 </html>
