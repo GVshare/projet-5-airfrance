@@ -30,7 +30,7 @@ class weather {
 
 			let windSpeed = weather.wind['speed'];
 			let windDirection = weather.wind['deg'];
-			let wind = "Wind speed of " + windSpeed + 'mps with a direction of ' + windDirection + '°';
+			let wind = "Wind of " + windSpeed + 'mps at ' + windDirection + '°';
 
 			let sunRise = Unix_timestamp(weather.sys['sunrise']) + ' UTC';
 			let sunSet = Unix_timestamp(weather.sys['sunset']) + ' UTC';
@@ -51,18 +51,61 @@ class weather {
 			let degreeBox = document.getElementById('degree');
 			degreeBox.textContent = tempC;
 
+			let degreeMin = document.getElementById('degreeMin');
+			degreeMin.textContent = "Minimum " + tempMinC;
+
+			let degreeMax = document.getElementById('degreeMax');
+			degreeMax.textContent = "Maximum " + tempMaxC;
+
+			let humidityBox = document.getElementById('humidity');
+			humidityBox.textContent = 'Humidity: ' + humidity;
+
+			let visibilityBox = document.getElementById('visibility');
+			visibilityBox.textContent = 'Visibility: ' + visibility;
+
+			let windBox = document.getElementById('wind');
+			windBox.textContent = wind;
+
+			let sunsetBox = document.getElementById('sunset');
+			sunsetBox.textContent = 'Sunset at ' + sunSet;
+
+			let sunriseBox = document.getElementById('sunrise');
+			sunriseBox.textContent = 'Sunrise at ' + sunRise;
+
+			
 
 
 		});
 
 		function Unix_timestamp(t) {
 
-			var dt = new Date(t*1000);
-			var hr = dt.getHours();
-			var m = "0" + dt.getMinutes();
-			var s = "0" + dt.getSeconds();
+			let dt = new Date(t*1000);
+			let hr = dt.getHours();
+			let m = "0" + dt.getMinutes();
+			let s = "0" + dt.getSeconds();
 			return hr+ ':' + m.substr(-2) + ':' + s.substr(-2);  
 		}
+
+		function startTime() {
+			let today = new Date();
+			let h = today.getHours();
+			let m = today.getMinutes();
+			let s = today.getSeconds();
+			m = checkTime(m);
+			s = checkTime(s);
+
+			let timeBox = document.getElementById('time');
+			timeBox.textContent = h + ":" + m + ":" + s + '';
+			
+			let t = setTimeout(startTime, 1000);
+		}
+
+		function checkTime(i) {
+			if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+			return i;
+		}
+
+		startTime();
 	};											
 };
 

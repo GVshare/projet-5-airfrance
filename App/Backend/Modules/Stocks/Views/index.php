@@ -145,8 +145,8 @@
 <footer>
     <div id="weatherBox">
       <div id="cityNameInfo">
-      	<div id="cityName">name</div>
-      	<div id="cityCoords">coords</div>
+      	<div id="cityName"></div>
+      	<div id="cityCoords"></div>
       </div>
       <div id="tempInfo">
       	<div id="logoBox">
@@ -156,20 +156,23 @@
         
         <div id="degreeInfo">
           <div id="degreeRange">
-            <div id="degreeMin">degree Minimum</div>
-            <div id="degreeMax">degree Maximum</div>
+            <div id="degreeMin"></div>
+            <div id="degreeMax"></div>
           </div>
         </div>
         <div id="otherInfo">
-          <div id="humidity">humidity</div>
-          <div id="visibility">visibility</div>
-          <div id="wind">wind</div>
+          <div id="humidity"></div>
+          <div id="visibility"></div>
+          <div id="wind"></div>
         </div>
         <div id="sunInfo">
-          <div id="sunset">sunset</div>
-          <div id="sunrise">sunrise</div>
+          <div id="sunset"></div>
+          <div id="sunrise"></div>
         </div>
-        <div id="time">time</div>
+        <div id="timeCurrent">
+        	<div id="current">Local Time</div>
+        	<div id="time"></div>
+        </div>
       </div>
     </div>
   </footer>

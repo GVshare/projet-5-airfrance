@@ -237,14 +237,44 @@ a {
 	font-size: 2em;
 }
 
+#degreeRange {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#degreeMin {
+	color: red;
+}
+
+#degreeMax {
+	color: blue;
+}
+
+#otherInfo {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#sunInfo {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+#timeCurrent {
+	margin-bottom: auto;
+	margin-top: auto;
+	font-size: 2em;
+}
+
 #cityNameInfo {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	text-align: center;
-	width: 30%;
+	width: 25%;
 	margin-top: auto;
 	margin-bottom: auto;
+	border-right: solid 1px black;
 }
 
 #cityName {
@@ -256,7 +286,7 @@ a {
 	justify-content: space-between;
 	width: 70%;
 	text-align: center;
-	padding-right: 10%;
+	padding-right: 5%;
 }
 
 #degreeInfo {
